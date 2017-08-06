@@ -1,0 +1,15 @@
+server:
+    port: 9000
+---
+
+spring:
+    profiles: development
+server:
+    port: 9001
+
+---
+
+spring:
+    profiles: production
+server:
+    port: 0
