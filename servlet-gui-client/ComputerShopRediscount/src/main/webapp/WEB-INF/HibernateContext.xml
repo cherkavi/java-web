@@ -1,0 +1,106 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/database.properties</value>
+		</property>
+	</bean>
+
+	<!-- Hibernate session factory -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Assortment
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.AssortmentDescription
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.AssortmentTemp
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.AssortmentTempId
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.AssortmentTypeDescription
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Class
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.ClassTemp
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.ClassTempId
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Clients
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Commodity
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.CommodityPaper
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.CommodityReturn
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.CommodityTemp
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Course
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Expenses
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Money
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Operation
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Parameters
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.PatternOfInput
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.PatternOfMoneyNote
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.People
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.PeoplePoint
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Photo
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Points
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Post
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Price
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.PriceTemp
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.PriceTempId
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Rediscount
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Reminder
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Serial
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.SerialTemp
+				</value>
+				<value>com.cherkashyn.vitalii.computer_shop.rediscount.domain.Supplier
+				</value>
+			</list>
+		</property>
+
+	</bean>
+
+</beans>
