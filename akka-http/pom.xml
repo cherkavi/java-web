@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cherkashyn.vitalii.akka.web</groupId>
+  <artifactId>akka-web</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>akka-web</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-http-core_2.12 -->
+    <dependency>
+	<groupId>com.typesafe.akka</groupId>
+	<artifactId>akka-http-core_2.12</artifactId>
+	<version>10.0.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
