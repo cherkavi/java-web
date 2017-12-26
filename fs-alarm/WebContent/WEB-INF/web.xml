@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>WebCamAlarm</display-name>
+	
+	<context-param>
+		<param-name>remove_file_count</param-name>
+		<param-value>20</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>photo_dir</param-name>
+		<param-value>D:\temp2\</param-value>
+	</context-param>
+	<servlet>
+		<description>
+		</description>
+		<display-name>CheckAlarm</display-name>
+		<servlet-name>CheckAlarm</servlet-name>
+		<servlet-class>
+		CheckAlarm</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>DownloadImage</display-name>
+		<servlet-name>DownloadImage</servlet-name>
+		<servlet-class>
+		DownloadImage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckAlarm</servlet-name>
+		<url-pattern>/CheckAlarm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadImage</servlet-name>
+		<url-pattern>/DownloadImage</url-pattern>
+	</servlet-mapping>
+</web-app>
