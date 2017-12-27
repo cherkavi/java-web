@@ -1,0 +1,10 @@
+When trying to connect to MySQL, I get "access denied 
+(java.lang.RuntimePermission modifyThreadGroup)" as an 
+accesscontrolexception. I tried to find Jetty's policy file, but with 
+no success. 
+
+
+
+I had this problem. If tyour in eclipse try turning off Google App 
+engine. Go to "Project->Properties->Google->App Engine" and uncheck 
+the "Use Google App Engine" box. 
