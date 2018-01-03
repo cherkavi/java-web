@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+    xmlns:ace="http://www.icefaces.org/icefaces/components"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+	>
+	<f:loadBundle basename="temp.TempMessages" var="messages" />
+    <h:head>
+        <title>ICEfaces 2</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+    <h:body>
+        <div id="header">
+           <!--
+           <ui:include src="/header.xhtml" >
+	          <ui:param name="param_name" value="param_value" />
+           </ui:include>
+           -->
+        </div>
+         <div id="content">
+             <h:form id="form">
+                <h:outputText value="#{user_manager.value}"></h:outputText>
+                <table>
+                	<tr>
+                		<th>
+                			<h:outputText value="#{messages.column_1}" > </h:outputText>
+                		</th>
+                		<th>
+                			<h:outputText value="#{messages.column_2}" > </h:outputText>
+                		</th>
+                		<th>
+                			<h:outputText value="#{messages.column_3}" > </h:outputText>
+                		</th>
+                		<th>
+                			<h:outputText value="#{messages.column_4}" > </h:outputText>
+                		</th>
+                	</tr>
+	                <ui:repeat var="user" value="#{user_manager.users}">
+	                	<tr>
+	                		<td>
+	                			<h:outputText value="#{user.id}" /> 
+	                		</td>
+	                		<td>
+	                			<h:outputText value="#{user.nick}" /> 
+	                		</td>
+	                		<td>
+	                			<h:outputText value="#{user.login}" /> 
+	                		</td>
+	                		<td>
+	                			<h:outputText value="#{user.password}" /> 
+	                		</td>
+	                	</tr>
+	                	<h:outputText value="" />
+	                </ui:repeat>
+                </table>
+             </h:form>
+         </div>
+    </h:body>
+</html>
