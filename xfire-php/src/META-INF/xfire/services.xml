@@ -1,0 +1,11 @@
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+  <service>
+    <name>register_user</name>
+    <namespace>bon_club</namespace>
+    <serviceClass>com.bonclub.health.server_interface.IRegisterUser</serviceClass>
+    <implementationClass>com.bonclub.health.server_impl.RegisterUser</implementationClass>
+	<style>document</style>  <!--// default-->
+	<!--  >style>rpc</style -->
+    <use>literal</use> <!-- default -->
+  </service>  
+</beans>
