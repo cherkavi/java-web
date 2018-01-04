@@ -1,0 +1,41 @@
+в файле web.xml может быть два вида параметров дл€ сервлетов 
+- параметры контекста ( доступные дл€ всех сервлетов ) 
+	( category: context-param)
+- параметры конфигурации ( самого сервлета )
+	( lastName: init-param )
+
+--------------------------------------------------------------
+------------              web.xml               --------------
+--------------------------------------------------------------
+<web-app>
+...
+  <context-param>
+    <param-name>category</param-name>
+    <param-value>Stars</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>UsingInitializationParameters</servlet-name>
+    <servlet-class>UsingInitializationParameters</servlet-class>
+    <init-param>
+      <param-name>lastName</param-name>
+      <param-value>Grant</param-value>
+    </init-param>
+  </servlet>
+...
+</web-app>
+
+
+--------------------------------------------------------------
+------------ UsingInitializationParameters.java --------------
+--------------------------------------------------------------
+ƒоступ к параметрам контекста:
+        ServletContext context = getServletContext();
+        String category = context.getInitParameter("category");
+
+        getInitParameter("lastName");
+
+
+ƒоступ к параметрам конфигурации:
+        ServletConfig configuration = getServletConfig();
+        String lastName = configuration.getInitParameter("lastName");
