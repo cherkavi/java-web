@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>dwr_example</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ServerSide</display-name>
+    <servlet-name>ServerSide</servlet-name>
+    <servlet-class>example.ServerSide</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServerSide</servlet-name>
+    <url-pattern>/ServerSide</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdditionServlet</display-name>
+    <servlet-name>AdditionServlet</servlet-name>
+    <servlet-class>example.AdditionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdditionServlet</servlet-name>
+    <url-pattern>/AdditionServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>dwr-invoker</servlet-name>
+  <display-name>DWR Servlet</display-name>
+  <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+  <init-param>
+     <param-name>debug</param-name>
+     <param-value>true</param-value>
+  </init-param>
+</servlet>
+
+<servlet-mapping>
+  <servlet-name>dwr-invoker</servlet-name>
+  <url-pattern>/dwr/*</url-pattern>
+</servlet-mapping>
+  
+</web-app>

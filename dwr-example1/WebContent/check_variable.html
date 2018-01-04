@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="button" value="CREATE local variable" onclick="create_variable()">
+	<br>
+	<input type="button" value="CHECK load variable" onclick="check_variable()">
+	<span id="console"> <span/>
+</body>
+<script type="text/javascript">
+	function check_variable(){
+		// получить локальную переменную, которая создана в другой функции
+		print("Local variable:");
+		println(temp_variable);
+	}
+</script>
+<script type="text/javascript">
+	function create_variable(){
+		// создать локальную переменную
+		// var создание локальной переменной, если убрать - будет глобальная переменная для всего документа
+		temp_variable="this is variable";
+	}
+
+	// ------------------
+	function println(value){
+		var console=document.getElementById("console");
+		if(console){
+			var span_element=document.createElement("span");
+			var text_element=document.createTextNode(value);
+			var br_element=document.createElement("br");
+			span_element.appendChild(text_element);
+			span_element.appendChild(br_element);
+			console.appendChild(span_element);
+		}
+	}
+	function print(value){
+		var console=document.getElementById("console");
+		if(console){
+			var span_element=document.createElement("span");
+			var text_element=document.createTextNode(value);
+			span_element.appendChild(text_element);
+			console.appendChild(span_element);
+		}
+	}
+
+</script>
+</html>
