@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>HttpSessionListener</display-name>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Identifier</display-name>
+		<servlet-name>Identifier</servlet-name>
+		<servlet-class>Identifier</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Destroy</display-name>
+		<servlet-name>Destroy</servlet-name>
+		<servlet-class>Destroy</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Identifier</servlet-name>
+		<url-pattern>/Identifier</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Destroy</servlet-name>
+		<url-pattern>/Destroy</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+<!-- 
+ 	<listener>
+		<listener-class>listener.SessionCreateDestroyListener</listener-class>
+	</listener>
+ -->
+ 	
+</web-app>
