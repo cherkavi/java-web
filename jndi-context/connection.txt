@@ -1,0 +1,3 @@
+			Context initContext = new InitialContext();
+			DataSource dataSource = (DataSource)initContext.lookup("java:/comp/env/jdbc/data_source");
+			connection=dataSource.getConnection();
