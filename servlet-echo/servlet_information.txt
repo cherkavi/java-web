@@ -1,0 +1,48 @@
+Запрос на сервлет:
+http://localhost:8080/WebCamAlarm/CheckAlarm
+
+
+( use prefix "get" )
+ContentType: null
+ContextPath: /WebCamAlarm
+LocalAddr: 127.0.0.1
+LocalName: localhost
+LocalPort: 8080
+Method: GET
+PathInfo: null
+PathTranslated: null
+Protocol: HTTP/1.1
+QueryString: null
+RemoteAddr: 127.0.0.1
+RemoteHost: 127.0.0.1
+RemotePort: 3561
+RemoteUser: null
+RequestURI: /WebCamAlarm/CheckAlarm
+RequestURL: http://localhost:8080/WebCamAlarm/CheckAlarm
+Scheme: http
+ServerName: localhost
+ServerPort: 8080
+ServletPath: /CheckAlarm
+
+
+---------------------------------------
+		System.out.println("ContentType: "+request.getContentType());
+		System.out.println("ContextPath: "+request.getContextPath());
+		System.out.println("LocalAddr: "+request.getLocalAddr());
+		System.out.println("LocalName: "+request.getLocalName());
+		System.out.println("LocalPort: "+request.getLocalPort());
+		System.out.println("Method: "+request.getMethod());
+		System.out.println("PathInfo: "+request.getPathInfo());
+		System.out.println("PathTranslated: "+request.getPathTranslated());
+		System.out.println("Protocol: "+request.getProtocol());
+		System.out.println("QueryString: "+request.getQueryString());
+		System.out.println("RemoteAddr: "+request.getRemoteAddr());
+		System.out.println("RemoteHost: "+request.getRemoteHost());
+		System.out.println("RemotePort: "+request.getRemotePort());
+		System.out.println("RemoteUser: "+request.getRemoteUser());
+		System.out.println("RequestURI: "+request.getRequestURI());
+		System.out.println("RequestURL: "+request.getRequestURL());
+		System.out.println("Scheme: "+request.getScheme());
+		System.out.println("ServerName: "+request.getServerName());
+		System.out.println("ServerPort: "+request.getServerPort());
+		System.out.println("ServletPath: "+request.getServletPath());
