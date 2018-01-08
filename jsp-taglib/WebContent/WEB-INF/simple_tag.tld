@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="WINDOWS-1251" ?>
+
+<taglib>
+
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.2</jspversion>
+
+	<short-name>simple</short-name>
+	
+	<uri>simple_tag.prefix</uri>
+	
+	<tag>
+		<name>simple-font</name>
+		<tag-class>utility.TagSample</tag-class>
+		<description> analog of HTML:Font</description>
+		<!-- может быть и "Empty" вместо "JSP" -->
+		<body-content>JSP</body-content>
+		
+		<attribute>
+			<!-- имя аттрибута -->
+			<name>fontSize</name>
+			<!-- является ли аттрибут обязательным, или может быть опущен -->
+			<required>true</required>
+			<!--может ли быть в качестве значения JSP  -->
+			<rtexpvalue>false</rtexpvalue>
+			<description>font size in HTML tag </description>
+		</attribute>
+		<attribute>
+			<!-- имя аттрибута -->
+			<name>color</name>
+			<!-- является ли аттрибут обязательным, или может быть опущен -->
+			<required>false</required>
+			<!--может ли быть в качестве значения JSP  -->
+			<rtexpvalue>false</rtexpvalue>
+			<description>font size in HTML tag </description>
+		</attribute>
+    </tag>
+
+</taglib>
