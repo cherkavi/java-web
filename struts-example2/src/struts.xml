@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+<constant name="struts.devMode" value="true" />
+<!-- http://localhost:8080/StrutsExample/temp/HelloWorld.action  -->
+<package name="" namespace="/temp" extends="struts-default">
+	<action name="HelloWorld*" class="example.Struts2HelloWorld">
+		<result >/HelloWorld.jsp</result>
+		<result name="another_return_value">/HelloWorld.jsp</result>
+	</action>
+	<action name="InputValue" class="example.InputValue">
+		<result >/InputValue.jsp</result>
+		<!-- <result name="ok">/loginOk.jsp</result> --> 
+		<result name="error">/InputValue.jsp</result>
+		<result name="input">/InputValue.jsp</result>
+		<result name="ok">/loginOk.jsp</result>
+	</action>
+<!-- Add actions here -->
+</package>
+
+
+<!-- Add packages here -->
+
+</struts>
