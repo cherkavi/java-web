@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function call_method(){
+			var applet=document.getElementById("applet_main");
+			//document.applet_name.method_simple();
+			applet.method_simple();
+		}
+		function send(){
+			var applet=document.getElementById("applet_main");
+			var message=document.getElementById("text_for_send").value;
+			applet.method_string(message);
+			//document.applet_name.method_string(message);
+		}
+		function echo(){
+			var applet=document.getElementById("applet_main");
+			var message=document.getElementById("text_for_echo").value;
+			var textarea=document.getElementById("log");
+			var responce=applet.echo(message);
+			toConsole(responce);
+			textarea.value+=responce;
+			//textarea.text+=document.applet_name.echo(message);
+		}
+		function doAlert(value){
+			alert(value);
+		}
+	function toConsole(value,value2){
+		var console_element=document.getElementById("console");
+		if(console_element){
+			var span_element=document.createElement("div");
+			var text_element=document.createTextNode(value);
+			if(value2){
+				text_element=document.createTextNode(value+value2);
+			}else{
+				text_element=document.createTextNode(value);
+			}
+			
+			span_element.appendChild(text_element);
+			console_element.appendChild(span_element);
+		}
+	}
+
+	</script>
+
+	<applet alt="applet not loaded" 
+			archive="applet.jar" 
+			code="BonCard.applet.AppletMain.class" 
+			width=500 
+			height=350 
+			id="applet_main"
+			name="applet_name">
+	
+	</applet>
+
+	<input type="button" value="Вызвать метод" onclick="call_method()">
+	<br>
+	<br>	
+    Данные для передачи в апплет: <br>
+	<input type="text" id="text_for_send" size=20><br>
+	<input type="button" id="button_send" value="Передать данные" onclick="send()">
+	<br>
+	<br>	
+    Данные для передачи в апплет: <br>
+	<input type="text" id="text_for_echo" size=20><br>
+	<input type="button" id="button_echo" value="Передать данные и получить ответ" onclick="echo()"><br>
+	<textarea rows="10" cols="20" id="log"></textarea>
+	
+	<span id="console">	
+	</span>
+	
+</body>
+</html>

@@ -1,0 +1,16 @@
+java package: 
+	com.cherkashyn.vitalii.computer_shop.rediscount.domain.*
+
+
+( https://svn.java.net/svn/appfuse~svn/tags/APPFUSE_1-5/database.properties.reference )
+JDBC Connection: 
+	Driver: 		org.firebirdsql.jdbc.FBDriver
+	url: 			jdbc:firebirdsql://localhost:3050/V:/Computer_shop/Program/Delphi7/Server/DataBase/server_data.GDB?sql_dialect=3
+?useUnicode=true&amp;encoding=UTF8
+	login: 			sysdba
+	password: 		masterkey
+	HibernateDialect:	org.hibernate.dialect.FirebirdDialect
+
+                                         
+Domain package:
+	com.cherkashyn.vitalii.computer_shop.rediscount.domain

@@ -1,0 +1,10 @@
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+ 
+  <service>
+    <name>Banking</name>
+    <namespace>mybank</namespace>
+    <serviceClass>server.IBankingService</serviceClass>
+    <implementationClass>server.BankingService</implementationClass>
+  </service>  
+  
+</beans>

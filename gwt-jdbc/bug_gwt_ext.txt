@@ -1,0 +1,3 @@
+// INFO вызывает ошибку в отображении GridPanel.Header
+//panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);  
+

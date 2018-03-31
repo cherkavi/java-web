@@ -1,0 +1,22 @@
+   1.  Check that the Java class's method and the default constructor are public
+   2. Add XFire servlet-related entries to web.xml
+   3. Create services.xml and put it under the WEB-INF/classes/META-INF/xfire directory
+   4. Add the XFire and third-party libraries into your Web application's WEB-INF/lib directory
+
+
+3. - Correction:
+NEED copy META-INF/xfire/services.xml
+to /build/classes
+
+
+WSDL (for stub)
+http://localhost:8100/XFireExample/services/Banking?wsdl
+
+
+For show aviable Services
+http://localhost:8100/XFireExample/services/ws
+
+
+http://localhost:8080/websvc/ws?from=11-2345&to=77-9876&amt=250.00&cur=EUR. 
+
+

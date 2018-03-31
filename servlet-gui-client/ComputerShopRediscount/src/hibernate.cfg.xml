@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.firebirdsql.jdbc.FBDriver</property>
+<!--         <property name="hibernate.connection.url">jdbc:firebirdsql://localhost:3050/V:/Computer_shop/Program/Delphi7/Server/DataBase/server_data.GDB?sql_dialect=3</property>  -->
+		<property name="hibernate.connection.url">jdbc:firebirdsql://192.168.0.108:3050/v:/Computer_shop/Program/Delphi7/Server/DataBase/server_data.GDB?sql_dialect=3</property> 
+        <property name="hibernate.connection.password">masterkey</property>
+        <property name="hibernate.connection.username">sysdba</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.FirebirdDialect</property>
+        <property name="show_sql">false</property>
+    </session-factory>
+</hibernate-configuration>

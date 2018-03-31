@@ -1,0 +1,98 @@
+Способ добавления DataSource в J2EE приложение:
+1. Create file /META-INF/context.xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<Context>
+		<Resource
+			name="jdbc/db" 
+			type="javax.sql.DataSource"
+			maxActive="100" 
+			maxIdle="30" 
+			maxWait="10000" 
+			url="jdbc:mysql://hostname.com/db"
+			driverClassName="com.mysql.jdbc.Driver"
+			username="user" 
+			password="pass"
+		/>
+	</Context>
+	
+	This roughly means that the webapplication context should create a datasource with the JNDI name jdbc/db
+
+!!! important JDBC Driver need to be placed into Tomcat ( Servlet Container ) /lib directory
+
+2. Add to /WEB-INF/web.xml following lines:
+	
+<resource-env-ref>
+    <resource-env-ref-name>jdbc/db</resource-env-ref-name>
+    <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
+</resource-env-ref>
+
+
+3. Way to get the Connection ( part of some class ):
+
+		private DataSource dataSource;
+
+		public Database(String jndiname) {
+			try {
+				dataSource = (DataSource) new InitialContext().lookup("java:comp/env/" + jndiname);
+			} catch (NamingException e) {
+				// Handle error that it's not configured in JNDI.
+				throw new SomeRuntimeException(jndiname + " is missing in JNDI!", e);
+			}
+		}
+
+		public Connection getConnection() {
+			return dataSource.getConnection();
+		}
+	---------------------------
+public class Database {
+
+	private DataSource dataSource;
+	private HibernateConnection hibernateConnection;
+	
+	private Class<?>[] databaseClasses=new Class[]{
+			database.wrap.Kind.class,
+			database.wrap.KindDescription.class,
+			database.wrap.Users.class,
+			database.wrap.Sites.class,
+			database.wrap.SiteState.class,
+			database.wrap.UserHistory.class,
+	};
+	
+	private Database(String jndiname) {
+		try {
+			dataSource = (DataSource) new InitialContext().lookup("java:comp/env/" + jndiname);
+			hibernateConnection=new HibernateConnection(DatabaseDrivers.MySQL.getHibernateDialect(), databaseClasses);
+		} catch (Exception e) {
+			// Handle error that it's not configured in JNDI.
+			System.err.println("Exception: "+e.getMessage());
+		}
+	}
+	
+	/** 
+	 * @return Получить соединение с базой данных 
+	 */
+	public ConnectWrap getConnection(){
+		try {
+			Connection connection=this.dataSource.getConnection();
+			return new ConnectWrap(connection, this.hibernateConnection.openSession(connection));
+		} catch (Exception e) {
+			System.err.println("Get connection with database Exception:"+e.getMessage());
+			return null;
+		}
+	}
+	
+	private static Database instance=null;
+	
+	/** получить соединение с базой данных  */
+	public static Database getInstance(){
+		if(instance==null){
+			synchronized(Database.class){
+				if(instance==null){
+					instance=new Database("jdbc/db");
+				}
+			}
+		}
+		return instance;
+	}
+}
+	

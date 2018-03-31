@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">	
+
+		<filter>
+			<filter-name>Controller</filter-name>
+			<filter-class>bonclub.office_private.web_service.access_control.AccessController</filter-class>
+			<init-param>
+				<description>allows IP address(es) delimited comma: "192.168.0.1, 0.0.0.0, 25.14.247.12", if parameter bellow is empty - it's like 0.0.0.0 </description>
+				<param-name>white_list</param-name>
+				<param-value>127.0.0.21, 34.25.21.21, 0.0.0.0</param-value>
+			</init-param>
+		</filter>
+		<filter-mapping>
+			<filter-name>Controller</filter-name>
+			<url-pattern>/*</url-pattern>
+		</filter-mapping>
+			 
+</web-app>	
