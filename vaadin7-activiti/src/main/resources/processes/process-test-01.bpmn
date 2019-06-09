@@ -8,6 +8,34 @@
       <yaoqiang:description/>
       <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
       <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
+      <activiti:executionListener delegateExpression="${listenerStartProcess}" event="start"/>
+      <activiti:executionListener delegateExpression="${listenerEndProcess}" event="end"/>
       <yaoqiang:pageFormat height="841.8897637795276" imageableHeight="831.8897637795276" imageableWidth="588.1102362204724" imageableX="5.0" imageableY="5.0" orientation="0" width="598.1102362204724"/>
       <yaoqiang:page background="#FFFFFF" horizontalCount="1" verticalCount="1"/>
     </extensionElements>
@@ -35,9 +63,21 @@
       <extensionElements>
         <activiti:field name="ui-form">
           <field>
-            <activiti:string>
-              <string>my personal UI form</string>
-            </activiti:string>
+            <field>
+              <field>
+                <field>
+                  <activiti:string>
+                    <string>
+                      <string>
+                        <string>
+                          <string>my personal UI form</string>
+                        </string>
+                      </string>
+                    </string>
+                  </activiti:string>
+                </field>
+              </field>
+            </field>
           </field>
         </activiti:field>
       </extensionElements>
@@ -58,14 +98,26 @@
     <dataObject id="OrderId" isCollection="false" itemSubjectRef="xsd:string" name="Unique order id">
       <extensionElements>
         <activiti:value>
-          <value>0</value>
+          <value>
+            <value>
+              <value>
+                <value>0</value>
+              </value>
+            </value>
+          </value>
         </activiti:value>
       </extensionElements>
     </dataObject>
     <dataObject id="OrderStatus" isCollection="false" itemSubjectRef="xsd:string" name="Current status of the order">
       <extensionElements>
         <activiti:value>
-          <value>none</value>
+          <value>
+            <value>
+              <value>
+                <value>none</value>
+              </value>
+            </value>
+          </value>
         </activiti:value>
       </extensionElements>
     </dataObject>
@@ -75,7 +127,7 @@
       <bpmndi:BPMNShape bpmnElement="startevent1" id="Yaoqiang-startevent1">
         <omgdc:Bounds height="32.0" width="32.0" x="70.0" y="160.0"/>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="18.8" width="34.0" x="69.0" y="200.6"/>
+          <omgdc:Bounds height="18.8" width="34.0" x="69.0" y="200.84"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="scripttask1" id="Yaoqiang-scripttask1">
@@ -99,7 +151,7 @@
       <bpmndi:BPMNShape bpmnElement="endevent1" id="Yaoqiang-endevent1">
         <omgdc:Bounds height="32.0" width="32.0" x="860.0" y="160.0"/>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="18.8" width="27.0" x="862.5" y="200.6"/>
+          <omgdc:Bounds height="18.8" width="27.0" x="862.5" y="200.84"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="servicetask1" id="Yaoqiang-servicetask1">
