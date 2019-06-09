@@ -105,17 +105,39 @@ public class FindView extends VerticalLayout implements View {
     }
 
     private void onClickButtonEnter() {
-        String orderId = this.textFieldNumber.getValue().trim();
+        final String orderId = this.textFieldNumber.getValue().trim();
         Optional<Order> order = repository.findByOrderId(orderId);
         if(order.isPresent()){
             shared.order = order.get();
             LOG.info("open existing order: "+this.textFieldNumber.getValue());
             navigator.navigateTo("upload");
         }else{
-            Notification.show("Nothing was found", "Try to find again", Notification.Type.TRAY_NOTIFICATION);
+            ConfirmDialog.show(UI.getCurrent(),
+                    "Nothing was found",
+                    "Do you want to create new one ?",
+                    "Yes", "No",
+                    (ConfirmDialog.Listener) dialog -> {
+                        if (dialog.isConfirmed()) {
+                            shared.order = createNewOrder(orderId);
+                            if(shared.order!=null){
+                                LOG.info("open just have created order: "+orderId);
+                                navigator.navigateTo("upload");
+                            }
+                        }else{
+                            Notification.show("Code was not found:"+orderId, "Try to find again", Notification.Type.TRAY_NOTIFICATION);
+                        }
+                    });
         }
-
     }
 
+    private Order createNewOrder(String orderId) {
+        try{
+            return this.repository.save(new Order(orderId));
+        }catch(RuntimeException re){
+            LOG.warn("can't create order with Id: "+orderId);
+            Notification.show("can't create new order with id: "+orderId, Notification.Type.ERROR_MESSAGE);
+            return null;
+        }
+    }
 
 }

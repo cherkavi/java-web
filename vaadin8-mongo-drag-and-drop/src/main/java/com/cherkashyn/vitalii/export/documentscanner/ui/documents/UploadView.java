@@ -87,7 +87,7 @@ public class UploadView extends GridLayout implements View, FileItemUpdater {
 
         this.addComponent(buildButtonPrintAll(), 0,8, 1,8);
 
-        // this.addComponent(buildPanelDropUploadArea(), 2,7, 4,8);
+        this.addComponent(buildPanelDropUploadArea(), 2,7, 4,8);
 
         if(exchange.order.wasSaved() && !exchange.order.files.isEmpty()){
             initUIData(exchange.order);
