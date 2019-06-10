@@ -1,0 +1,73 @@
+//***** ADDITIONS BEGIN *****
+//grant the following only to codeBase "http://www.serialio.com/-" {
+grant codeBase "http://www.serialio.com/-" {
+	permission java.io.FilePermission "${java.home}/lib/ext/jspWinPiDemo.dll", "read";
+	permission java.io.FilePermission "${java.home}/lib/ext/x86/jspWinPiDemo.dll", "read";
+	permission java.lang.RuntimePermission "loadLibrary.jspWinPiDemo";
+
+//	permission java.lang.RuntimePermission "loadLibrary.<<ALL FILES>>";
+//	permission java.lang.RuntimePermission "loadLibrary.file:${java.home}/lib/ext/x86/jspWinPiDemo";
+	
+        permission java.util.PropertyPermission "*", "read";
+        permission java.util.PropertyPermission "*", "write";
+        permission java.lang.RuntimePermission "modifyThread";
+};
+
+// In case SerialPort is installed on CLASSPATH
+// (note This no longer works with ver 1.3 "file:/-")
+grant codeBase "file:/C:/-" {
+	permission java.security.AllPermission;
+};
+grant codeBase "file:/D:/-" {
+	permission java.security.AllPermission;
+};
+
+//***** ADDITIONS END *****
+
+// Standard extensions get all permissions by default
+
+grant codeBase "file:${java.home}/lib/ext/*" {
+	permission java.security.AllPermission;
+};
+
+// default permissions granted to all domains
+
+grant { 
+	// Allows any thread to stop itself using the java.lang.Thread.stop()
+	// method that takes no argument.
+	// Note that this permission is granted by default only to remain
+	// backwards compatible.
+	// It is strongly recommended that you either remove this permission
+	// from this policy file or further restrict it to code sources
+	// that you specify, because Thread.stop() is potentially unsafe.
+	// See "http://java.sun.com/notes" for more information.
+	permission java.lang.RuntimePermission "stopThread";
+
+	// allows anyone to listen on un-privileged ports
+	permission java.net.SocketPermission "localhost:1024-", "listen";
+
+	// "standard" properies that can be read by anyone
+
+	permission java.util.PropertyPermission "java.version", "read";
+	permission java.util.PropertyPermission "java.vendor", "read";
+	permission java.util.PropertyPermission "java.vendor.url", "read";
+	permission java.util.PropertyPermission "java.class.version", "read";
+	permission java.util.PropertyPermission "os.name", "read";
+	permission java.util.PropertyPermission "os.version", "read";
+	permission java.util.PropertyPermission "os.arch", "read";
+	permission java.util.PropertyPermission "file.separator", "read";
+	permission java.util.PropertyPermission "path.separator", "read";
+	permission java.util.PropertyPermission "line.separator", "read";
+
+	permission java.util.PropertyPermission "java.specification.version", "read";
+	permission java.util.PropertyPermission "java.specification.vendor", "read";
+	permission java.util.PropertyPermission "java.specification.name", "read";
+
+	permission java.util.PropertyPermission "java.vm.specification.version", "read";
+	permission java.util.PropertyPermission "java.vm.specification.vendor", "read";
+	permission java.util.PropertyPermission "java.vm.specification.name", "read";
+	permission java.util.PropertyPermission "java.vm.version", "read";
+	permission java.util.PropertyPermission "java.vm.vendor", "read";
+	permission java.util.PropertyPermission "java.vm.name", "read";
+};
+
