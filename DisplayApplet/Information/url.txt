@@ -1,0 +1,8 @@
+Card_Reader_1.gui.HTML.MainApplet
+
+"http://192.168.15.119:8080/Card_Reader_Server_1/CardServer");
+flag_is_loaded=LoadLibraryFromJar.loadRemoteDriver("http://192.168.15.119:8080/DisplayApplet/");
+если убрать в конце / - "падает" Internet Explorer
+
+DisplayApplet.JavaScript.GetBody
+ private String path_to_display_applet="http://192.168.15.119:8080/DisplayApplet/DisplayForApplet";
