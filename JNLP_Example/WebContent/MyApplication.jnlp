@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- JNLP файл для демонстрационной программы SwingSet2 -->
+    <jnlp
+      spec="1.0+"
+      codebase="http://192.168.15.119:8080/JNLP_Example" href="MyApplication.jnlp">
+      <information>
+        <title>Демонстрациронная программа TestSwin</title>
+        <vendor>Sun Microsystems, Inc.</vendor>
+        <homepage href="help.html"/>
+        <description>Демонстрация работы Swing application </description>
+        <description kind="short">Демонстрация возможностей графического пользовательского интерфейса Swing.</description>
+        <icon href="images/swingset2.jpg"/>
+        <offline-allowed/>
+      </information>
+      <resources>
+        <j2se version="1.6"/>
+        <jar href="TestSwing.jar"/>
+      </resources>
+      <application-desc main-class="TestSwing"/>
+    </jnlp>

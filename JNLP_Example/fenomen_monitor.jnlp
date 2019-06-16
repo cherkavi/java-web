@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.6+"
+      codebase="http://127.0.0.1:8080/FenomenServer"
+      href="fenomen_monitor.jnlp">
+   
+    <information>
+    	<title>Monitor for remote modules</title>
+        <vendor>Vitaliy Cherkashin</vendor>
+        <homepage href="http://127.0.0.1:8080/FenomenServer/Start"/>
+        <description>tracking of the registered alerts from remote modules</description>
+	<icon href="images/fenomen_icon.png"/> 
+    	<icon kind="splash" href="images/fenomen_logo.png"/> 
+    </information>
+
+    <security>
+        <all-permissions/>
+    </security>
+
+    <resources>
+        <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se">
+        </j2se>
+        <jar href="FenomenMonitor.jar" main="true"/>         
+    </resources>
+    
+    <application-desc main-class="fenomen.monitor.Monitor">
+    </application-desc>
+</jnlp>
