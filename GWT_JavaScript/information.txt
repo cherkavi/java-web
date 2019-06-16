@@ -1,0 +1,57 @@
+HTML pattern:
+	add to Head:
+    		<script language="javascript">
+		    	function jsNativeFunction(message){
+        			alert ("This is native function: "+message);
+		        	// parent.anotherFunction("This is native function: "+message);
+    			}
+	    	</script>
+		
+	add to Body:
+      		<tr>
+		      	<td colspan="2">
+      				Send to GWT:  
+		      		<input type="text" id="text_value" value="value for send" /> 
+		      		<input type="button" onclick="js_to_gwt_regular(document.getElementById('text_value').value);return false;" value="regular" />
+		      		<input type="button" onclick="js_to_gwt_static(document.getElementById('text_value').value);return false;" value="static" />
+		      	</td>
+	       </tr>
+
+
+EntryPoint:
+	add to #onModuleLoad()
+		initJS(this);
+
+	add: 
+		/**
+		 * declare JavaScript functions
+		 * @param app
+		 */
+		private native void initJS(JSF_GWT_gwt app) /*-{
+			$wnd.js_to_gwt_static = function (param) {
+				// alert(preambula);
+				@com.test.client.JSF_GWT_gwt::staticMethodForJS(Ljava/lang/String;)(param);
+			};
+			$wnd.js_to_gwt_regular = function (param) {
+				// alert(preambula);
+				app.@com.test.client.JSF_GWT_gwt::regularMethodForJS(Ljava/lang/String;)(param);
+			};
+		}-*/;
+
+		/**
+		 * static method for JS 
+		 * @param value
+		 */
+		public static void staticMethodForJS(final String value){
+			System.out.println("DEBUG JS called STATIC method: " + value);
+		}
+
+		/** 
+		 * regular method
+		 * @param value
+		 */
+		public void regularMethodForJS(String value){
+			System.out.println("DEBUG JS called REGULAR method: "+value);
+			nameField.setValue(value);
+		}
+

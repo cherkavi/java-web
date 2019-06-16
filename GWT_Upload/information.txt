@@ -1,0 +1,72 @@
+Состоит из двух частей:
+- GWT
+
+		final FormPanel formPanel=new FormPanel();
+		panelManager.add(formPanel);
+		formPanel.setEncoding(FormPanel.ENCODING_MULTIPART);
+		formPanel.setMethod(FormPanel.METHOD_POST);
+		formPanel.setAction(GWT.getModuleBaseURL()+"CommodityAssortmentXlsUpload");// ссылка на HttpServlet
+		FileUpload fileUpload=new FileUpload();
+		fileUpload.setName("xlsFileUpload");// имя поля, которое будет содержать файл		
+		formPanel.setWidget(fileUpload);
+		
+		formPanel.addSubmitHandler(new SubmitHandler(){
+			@Override
+			public void onSubmit(SubmitEvent event) {
+				// event.cancel();
+				GWT.log("onSubmit active", null);
+			}
+		});
+		
+		formPanel.addSubmitCompleteHandler(new SubmitCompleteHandler(){
+			@Override
+			public void onSubmitComplete(SubmitCompleteEvent event) {
+				Window.alert("Submit complete");
+			}
+		});
+
+
+
+- HttpServlet, на который указывает FormPanel.setAction(); ( need org.apache.commons.fileupload.servlet.ServletFileUpload )
+	
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ServletFileUpload upload = new ServletFileUpload();
+        try{
+            FileItemIterator iter = upload.getItemIterator(request);
+            while (iter.hasNext()) {
+                FileItemStream item = iter.next();
+                String fieldName = item.getFieldName();
+                System.out.println("Find element by name ( UploadFile )"); // fileUpload.setName("xlsFileUpload");
+                if((fieldName!=null)&&(fieldName.equals("xlsFileUpload"))){
+                	System.out.println(" element finded ");
+                }
+                InputStream stream = item.openStream();
+                // создать файл для выгрузки данных 
+                FileOutputStream out=new FileOutputStream(this.getFileName());
+                // скопировать из источника в приемник 
+                this.copyFromSourceToDestination(stream, out);
+                out.close();
+            }
+        }
+        catch(Exception e){
+        	System.err.println("CommodityAssortmentUpload#doPost Exception: "+e.getMessage());
+            e.printStackTrace();        
+        }		
+	}
+
+	/** копирование данных из источника в приемник */
+	private void copyFromSourceToDestination(InputStream input, OutputStream output) throws IOException{
+        int len=(-1);
+        byte[] buffer = new byte[8192];
+        while ((len = input.read(buffer, 0, buffer.length)) != -1) {
+            output.write(buffer, 0, len);
+            output.flush();
+        }
+	}
+	
+	/** получить полный путь к файлу для сохранения полученного вложения */
+	private String getFileName(){
+		return "c:\\GWT_readed_file.bin";
+	}

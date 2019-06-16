@@ -1,0 +1,19 @@
+- в src/my.package 
+	создать каталог public/ , 
+	создать каталог public/lib/ 
+	записать туда gwtext.jar
+- добавить gwtext.jar в BuildPath (можно создать UserLibrary)
+- в src/my.package/public/ создать катлог js/ext и записать туда (ext-2.0.2 библиотеку):
+	ext-all.js
+	ext-all-debug.js
+	ext-core.js
+	ext-core-debug.js
+	\adapter
+	\resources
+- в src/my.package/<ProjectName>.gwt.xml добавить:
+	<!-- Inherit the GWTExt Toolkit library configuration.	  -->
+	<inherits name='com.gwtext.GwtExt' />
+
+	<stylesheet src="js/ext/resources/css/ext-all.css" />
+	<script src="js/ext/adapter/ext/ext-base.js" />
+	<script src="js/ext/ext-all.js" />  	
