@@ -1,0 +1,22 @@
+	public String getClientId(FacesContext context, String componentId) {
+		UIViewRoot root = context.getViewRoot();
+		UIComponent c = findComponent(root, componentId);
+		return c.getClientId(context);
+	}
+
+	/**
+	 * Finds component with the given id
+	 */
+	private UIComponent findComponent(UIComponent c, String id) {
+		if (id.equals(c.getId())) {
+			return c;
+		}
+		Iterator<UIComponent> kids = c.getFacetsAndChildren();
+		while (kids.hasNext()) {
+			UIComponent found = findComponent(kids.next(), id);
+			if (found != null) {
+				return found;
+			}
+		}
+		return null;
+	}

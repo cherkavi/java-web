@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      >
+    <!-- xmlns:ez="http://java.sun.com/jsf/composite/components"       -->
+    <h:head>
+        <f:loadBundle basename="gui.Registration" var="message">  </f:loadBundle>
+
+        <title> 
+            <h:outputText value="#{message.page_title}" />
+        </title>
+        <style type="text/css">
+            .error_message{
+                color:red;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div align="center">
+            <h:form>
+                <table>
+                    <tr>
+                        <td> 
+                            <h:outputText value="#{message.login}" />
+                        </td>
+                        <td>
+                            <h:inputText required="true" requiredMessage="#{message.login_need}" value="#{registration.login}" id="edit_login" >
+                            </h:inputText>
+                            <h:message for="edit_login" styleClass="error_message" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <h:outputText value="#{message.password}" /> </td>
+                        <td> 
+                             <h:inputSecret required="true" requiredMessage="#{message.password_need}" value="#{registration.password}" id="edit_password" />
+                             <h:message for="edit_password" styleClass="error_message" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h:messages id="command_button_message"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"> 
+                            <h:commandButton title="#{message.button_submit}" value="#{message.button_submit}" action="#{registration.submit}" style="width: 100%;"  >
+                            </h:commandButton>
+                        </td>
+                    </tr>
+                </table>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

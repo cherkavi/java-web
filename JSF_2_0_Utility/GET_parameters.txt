@@ -1,0 +1,18 @@
+POST-REDIRECT-GET Using View Parameters
+
+View Parameters is a simple, declarative way to map incoming request parameter values to special components within the view. These mappings are specified using the new <f:viewParam> component, within the new <f:metadata> section of the view. Consider the following example:
+
+   <f:metadata>
+      <f:viewParam name="foo" value="#{bean.foo}"/>
+   </f:metadata>
+
+This example specifies that the value of the request parameter with the name "foo" is automatically assigned to the property at #{bean.foo}. So for a GET request as follows:
+
+   page1.jspx?foo=bar
+
+
+
+or into page
+
+<h:commandButton value="submit" action="page02?faces-redirect=true&amp;includeViewParams=true" /></p>
+

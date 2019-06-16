@@ -1,0 +1,23 @@
+ѕример командной строки:
+
+                            <h:form>
+                                <h:commandLink action="#{action_list.linkClick}">
+                                    <h:outputText value="#{list_element.date}" />
+                                </h:commandLink>
+                            </h:form>
+
+при нажатии на данную ссылку попадаем в метод:
+
+
+    public void linkClick()  {
+        FacesContext context=FacesContext.getCurrentInstance();
+        // получить элемент
+        ActionListElement element=(ActionListElement)context.getApplication().evaluateExpressionGet(context, "#{list_element}", ActionListElement.class);
+        if(element!=null){
+            // отобразить страницу с более детальной информацией
+            System.out.println("Date: "+element.getDate()+"   State: "+element.getState());
+        }else{
+            System.err.println("Value does not recognized");
+        }
+	
+    }

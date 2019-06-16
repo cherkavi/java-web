@@ -1,0 +1,51 @@
+WEB-INF
+	faces-config.xml
+
+	<?xml version="1.0" encoding="UTF-8"?>
+
+		<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		     http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+		     version="2.0">
+
+		     <lifecycle>
+        		<phase-listener>package_listener.UserLoginListener</phase-listener>
+		     </lifecycle>
+
+		</faces-config>
+
+
+
+
+package package_listener.UserLoginListener
+
+public class UserLoginListener implements PhaseListener{
+
+    public void afterPhase(PhaseEvent event) {
+    }
+
+    public void beforePhase(PhaseEvent event) {
+        FacesContext context=FacesContext.getCurrentInstance();
+        String viewId=context.getViewRoot().getViewId();
+        if(!viewId.equals("/index.xhtml")){
+            // проверить на наличие в сессии уникального идентификатора пользователя
+            UserHolder userHolder=(UserHolder)context.getApplication().evaluateExpressionGet(context, "#{user_holder}", UserHolder.class);
+            if((userHolder!=null)&&(userHolder.getUser()!=null)&&(userHolder.getUser().getId()>0)){
+                // пользователь установлен - не изменять течение программы
+            }else{
+                // пользователь пытается пройти в часть сайта, которая требует идентификации
+                ViewHandler viewHandler=context.getApplication().getViewHandler();
+                UIViewRoot view=viewHandler.createView(context, "/index.xhtml");
+                context.setViewRoot(view);
+            }
+        }else{
+            // отображаться будет страница по логгированию-входу на ресурс 
+        }
+    }
+
+    public PhaseId getPhaseId() {
+        return PhaseId.RENDER_RESPONSE;
+    }
+
+}

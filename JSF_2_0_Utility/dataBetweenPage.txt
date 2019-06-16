@@ -1,0 +1,70 @@
+Передача данных между страницами 
+( то есть между @MessageBean @RequestScoped ) которые создаются и удаляются при запросе-ответе.
+
+Другими словами, например
+
+action1 имеет свяанный с ней MessageBean ActionBean1
+action2 имеет свяанный с ней MessageBean ActionBean2
+
+ActionBean1, который создается при запросе страницы action1 и при возвращении результата этой же странице. 
+Если страница action1 хочет передать информацию странице action2 ( например выбрана одна из ссылок с данными ), 
+и нужно это сделать не затрагивая HttpSession, нужно сделать следющее:
+
+        FacesContext context=FacesContext.getCurrentInstance();
+        ActionListElement element=(ActionListElement)context.getApplication().evaluateExpressionGet(context, "#{list_element}", ActionListElement.class);
+
+
+            ELContext elContext=context.getELContext();
+            ValueExpression ve=context.getApplication().getExpressionFactory().createValueExpression(elContext, "#{data_for_page}",ActionListElement.class);
+            ve.setValue(elContext, element);
+
+после этого в контексте страницы станет доступной переменная #{data_for_page}, которая будет содержать объект ActionListElement
+
+
+------------------------------------------------------------------------------
+или же есть вероятность заменить это следующей строкой в коде XHTML:
+
+<f:setPropertyActionListener value="#{list_element}" target="#{data_for_page}" />
+
+
+==========================================================================================================
+Если отображается информация на странице из одного бина, но в другой не устанавливается - 
+в конструкторе другого ( в который нужно установить значение )
+		try{
+			FacesContext context=FacesContext.getCurrentInstance();
+			context.getViewRoot().invokeOnComponent(context, this.getClientId(context, "new_site"), new ContextCallback(){
+				public void invokeContextCallback(FacesContext arg0, UIComponent component) {
+					System.out.println(">>> Invoke on component:<<< "+component);
+					HtmlInputText text=(HtmlInputText)component;
+					System.out.print("finded element: ");
+					System.out.println("Value:"+text.getValue());
+					newAddress=(String)text.getValue();
+				}
+			});
+		}catch(Exception ex){
+			System.err.println("Invoke on component Exception:"+ex.getMessage());
+		}
+
+
+	public String getClientId(FacesContext context, String componentId) {
+		UIViewRoot root = context.getViewRoot();
+		UIComponent c = findComponent(root, componentId);
+		return c.getClientId(context);
+	}
+
+	/**
+	 * Finds component with the given id
+	 */
+	private UIComponent findComponent(UIComponent c, String id) {
+		if (id.equals(c.getId())) {
+			return c;
+		}
+		Iterator<UIComponent> kids = c.getFacetsAndChildren();
+		while (kids.hasNext()) {
+			UIComponent found = findComponent(kids.next(), id);
+			if (found != null) {
+				return found;
+			}
+		}
+		return null;
+	}
