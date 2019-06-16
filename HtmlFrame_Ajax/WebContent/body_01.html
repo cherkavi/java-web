@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="connection_core.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		/**
+		@param textElement - имя текстового элемента, который содержит текст для отправки
+		@param url - адрес, куда нужно отправлять 
+		@param parameterName - имя параметра, который нужно отправлять 
+		*/
+		function sendText(event, textElement,url,parameterName){
+			while(true){
+				if(event!=null){
+					try{
+						if(event.keyCode==13){
+						}else{
+							break;
+						}
+					}catch(err){
+						break;
+					};	
+				}
+				//var textForSend=escape(document.getElementById(textElement).value);
+				//var textForSend=Utf8.encode(document.getElementById(textElement).value);
+				var textForSend=document.getElementById(textElement).value;
+				//var textForSend=URLEncoder.encode(document.getElementById(textElement).value);
+				//var textForSend=encode_utf8(document.getElementById(textElement).value);
+				var urlString=new String(url);
+				
+				var position=urlString.indexOf("?");
+				var lastIndex=urlString.lastIndexOf("&");
+				var urlString;
+				if(position>0){
+					//alert(urlString.length+"   "+lastIndex);
+					if((urlString.length-1)==lastIndex){
+						urlString=url+parameterName+"="+textForSend;
+					}else{
+						urlString=url+"&"+parameterName+"="+textForSend;
+					}	
+				}else{
+					urlString=url+"?"+parameterName+"="+textForSend;
+				}
+				//alert(encodeURI(urlString));
+				//window.location=encodeURI(urlString);
+				ajaxpage(encodeURI(urlString), 'div_main');
+
+				break;
+			}
+		}
+		AjaxUtility=function(){};
+		// назначение функции для прослушивания нажатия кнопки
+		AjaxUtility.TextField=function(textFieldId, buttonId,url, parameterName){
+			var buttonElement=document.getElementById(buttonId);
+			buttonElement.setAttribute("onclick", "sendText(null, '"+textFieldId+"','"+url+"','"+parameterName+"');");
+			var textfieldElement=document.getElementById(textFieldId);
+			textfieldElement.setAttribute("onkeydown", "sendText(event, '"+textFieldId+"','"+url+"','"+parameterName+"');");
+			//alert(element.onclick);
+		}
+	</script>
+	<br>
+	<h2>body 01</h2>
+	
+	<script type="text/javascript">
+  		Calendar.setup({
+   			inputField  : "id_begin_action_date",         // ID поля вводу дати
+        	button      : "btn_begin_action_date"       // ID кнопки для меню вибору дати
+     	});
+  </script>	
+		<td><input type="text" name="begin_action_date" size="10" value="" class="inputfield" title=""id="id_begin_action_date">    
+     	<img src="/images/calendar.gif" 
+     		 id="btn_begin_action_date" 
+     		 style="cursor: pointer; border: 1px solid grey" 
+     		 title="" 
+     		 onmouseover="this.style.background='gray';" onmouseout="this.style.background=''" />
+      </td>	
+	<input type="button" id="button_01" value="show alert" />
+	<input type="text" id="text_field_01" valuie="hello" />
+	<br>
+	<br><div onclick="ajaxpage('http://localhost:8080/HtmlFrame_Ajax/body_02.html', 'div_body')"><strong>  body 02 </strong></div>
+	<script type="text/javascript">
+		AjaxUtility.TextField("text_field_01","button_01", "http://localhost:8080/HtmlFrame_Ajax/LetterDecoder","textValue");
+	</script>
+	
+	
+</body>
+</html>

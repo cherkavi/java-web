@@ -1,0 +1,19 @@
+<link href="CSS/calendar-blue.css" type="text/css" rel="stylesheet"></link>
+<script src="js/calendar-emix.js" type="text/javascript"></script>
+<script src="js/calendar-RU.js" type="text/javascript"></script>
+<script src="js/calendar-setup.js" type="text/javascript"></script>
+
+
+<td>
+<input type="text" name="date_beg" size="10" value="" id="id_date_beg">				
+<img src="images/calendar.gif" id="btn_date_beg" style="cursor: pointer; border: 1px solid grey" onmouseover="this.style.background='gray';" onmouseout="this.style.background=''" />
+			  </td>
+
+
+<script type="text/javascript">
+  		Calendar.setup({
+			inputField  : "id_date_beg",         // ID поля вводу дати
+      		ifFormat    : "%d.%m.%Y",    // формат дати (23.03.2008)
+      		button      : "btn_date_beg"       // ID кнопки для меню вибору дати
+    	});
+</script>

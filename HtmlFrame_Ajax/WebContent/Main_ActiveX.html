@@ -1,0 +1,278 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ActiveX</title>
+
+	<script type="text/javascript" >
+	var imagePath="ajax-loader-circle.gif" 
+	var loadedobjects="";
+	var rootdomain="http://"+window.location.hostname;
+	var headScriptAdd=0;
+	
+		function ajaxpage(url, containerid){
+			var page_request = false
+			if (window.XMLHttpRequest) // if Mozilla, Safari etc
+				page_request = new XMLHttpRequest()
+			else if (window.ActiveXObject){ // if IE
+				try {
+					page_request = new ActiveXObject("Msxml2.XMLHTTP"); //new ActiveXObject('MSXML2.XMLHTTP.3.0');
+				} catch (e){
+					try{
+						page_request = new ActiveXObject("Microsoft.XMLHTTP"); //new ActiveXObject('MSXML2.XMLHTTP.3.0');
+					}catch (e){}
+				}
+			}else return false
+			page_request.onreadystatechange=function(){
+				loadpage(page_request, containerid)
+			}
+			document.getElementById(containerid).innerHTML=
+			"<table width=\"400px\"><tr><td width=\"100%\" valign=\"middle\" align=\"center\" height=\"400px\" > <img style=\"top: 50%;vertical-align: middle;\" src=\""+imagePath+"\"  alt=\"load page\" /></td></tr></table>";
+			page_request.open('GET', url, true)
+			page_request.send(null)
+		}
+
+		
+		
+		function loadpage(page_request, containerid){
+			if (page_request.readyState == 4 && (page_request.status==200 || window.location.href.indexOf("http")==-1)){
+				// place for remove from head
+				//var head = document.getElementsByTagName("head")[0];
+				//for(var counter=0;counter<headScriptAdd;counter++){
+				//	head.removeChild(head.lastChild());}
+				// место замены изображения 
+				headScriptAdd=0;
+				document.getElementById(containerid).innerHTML=getBody(page_request.responseText);
+				getResponseTextSourceScripts(page_request.responseText);
+				//document.getElementById(containerid).innerHTML=page_request.responseText;
+			}
+		}
+
+		function getBody(value){
+			var html_text=new String(value);
+			var positionBodyBegin=getPositionBodyBegin(html_text,0);
+			var positionBodyEnd=getPositionBodyEnd(html_text,positionBodyBegin);
+			if((positionBodyBegin>0)&&(positionBodyEnd>0)){
+				var tempValue=new String(html_text);
+				//alert(html_text.substring(positionBodyBegin+1, positionBodyEnd-1));
+				return html_text.substring(positionBodyBegin+1, positionBodyEnd-1);
+			}else{
+				return html_text;
+			}
+			
+		}
+
+		function getPositionBodyBegin(value, position_begin){
+			var position=value.indexOf("<body",position_begin);
+			if(position>0){
+				return value.indexOf(">",position);
+			}else{
+				return -1;
+			}
+		}
+
+		function getPositionBodyEnd(value, position_begin){
+			return value.indexOf(escape("/")+"body>",position_begin);
+		}
+		
+		
+		function getPositionBegin(value, position_begin){
+			var position=value.indexOf("<script",position_begin);
+			if(position>0){
+				return value.indexOf(">",position);
+			}else{
+				return -1;
+			}
+		}
+
+		function getPositionEnd(value, position_begin){
+			return value.indexOf(escape("/")+"script>",position_begin);
+		}
+		
+		
+		function getResponseTextSourceScripts(responseText){
+			var head = document.getElementsByTagName("head")[0];
+			var value=new String(responseText);
+			var position_begin=0;
+			var position_end=0;
+			position_begin=getPositionBegin(value,0);
+			position_end=0;
+			while(position_begin>=0){
+				// получить начало и конец скрипта 
+				position_end=getPositionEnd(value,position_begin);
+				if(position_end<position_begin){
+					break;
+				}
+				// создать элемент скрипт и добавить его в Header
+				var script = document.createElement("script");
+				script.type = "text/javascript";
+				var scriptText=value.substring(position_begin+1, position_end-1);
+				//eval('"'+scriptText+'"');
+				//alert(scriptText);
+				script.appendChild(document.createTextNode(scriptText));
+				head.appendChild(script);
+				headScriptAdd++;
+				// вырезать скрипт из исходного кода 
+				position_begin=getPositionBegin(value, position_end);
+			};
+			
+		}		
+	</script> 
+ 
+<!--   	<script type="text/javascript" src="prototype-1.6.0.3.js"></script> 
+ 	<script type="text/javascript" src="yahoo-min.js"></script>
+ 	<script type="text/javascript" src="event-min.js"></script>
+ 	<script type="text/javascript" src="connection-min.js"></script>
+		<script src="jquery.timepickr.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="jquery.timepickr.css">
+--> 	
+ 	
+ 	<script type="text/javascript">
+/* 		function ajaxpage(sUrl,elementId){
+ 			//var sUrl = "include.html";
+ 			var callback = {
+ 				success: function(o) {
+ 					document.getElementById(elementId).innerHTML =  o.responseText;
+ 					},
+ 				failure: function(o) {
+ 					alert("AJAX doesn’t work"); //FAILURE
+ 					}
+ 				} 
+
+ 			var transaction = YAHOO.util.Connect.asyncRequest('GET', sUrl, callback, null);
+ 			return false;
+ 	
+// 			var ajaxReq = new Ajax.Updater(document.getElementById(elementId), 
+// 										   sUrl 
+// 										   ,{method: 'get', parameters:'key=value'}
+//			                              );
+    
+			$(elementId).load(sUrl); 					 					
+ 		}
+*/ 		
+ 	</script>
+ 
+	<link type="text/css" href="http://jqueryui.com/latest/themes/base/ui.all.css" rel="stylesheet" />
+
+  	<script type="text/javascript" src="jquery-1.3.2.js"></script>
+  	<script type="text/javascript" src="ui.core.js"></script>
+  	<script type="text/javascript" src="ui.datepicker.js"></script>
+  	<script type="text/javascript" src="jquery-ui-i18n.min.js"></script>
+  	<script type="text/javascript" src="date_picker_wrap.js"></script>
+  	<script type="text/javascript" src="date_picker_wrap.js"></script>
+  	
+	<script type="text/javascript" src="datepickercontrol.js"></script>
+	
+	<script type="text/javascript" src="ajax_form_submit.js"></script>
+	<link type="text/css" rel="stylesheet" href="datepickercontrol.css">
+
+	<script type="text/javascript">
+
+	function load_begin(){
+		ajaxpage("http://localhost:8080/HtmlFrame_Ajax/tree.html", "div_tree");
+		ajaxpage("http://localhost:8080/HtmlFrame_Ajax/menu_01.html", "div_menu");
+		ajaxpage("http://localhost:8080/HtmlFrame_Ajax/body_01.html", "div_body");
+		
+	}
+
+
+	function start_load(){
+		var i=0;
+	}
+	function done_load(response){
+		var i=0;
+		alert(response);
+	}
+	
+	/** динамическое создание формы, выявление "file",  отправка на указанный адрес
+	@param path_to_server - путь к серверу
+	@param form_id - уникальный идентификатор формы ( можно более одного ) 
+		 
+	*/
+	function post_form(){
+		var argumentsLength=post_form.arguments.length;
+		
+		var destinationFormElement=document.createElement("FORM");
+		destinationFormElement.setAttribute("enctype","multipart/form-data");
+		var path_to_server=post_form.arguments[0];
+		destinationFormElement.setAttribute("action", path_to_server);
+		destinationFormElement.setAttribute("method","post");
+
+		//destinationFormElement.setAttribute("onsubmit","return AIM.submit(this, {'"+start_load_function+"' : startCallback, '"+done_load_function+"' : completeCallback})");
+		//destinationFormElement.onsubmit="return AIM.submit(this, {'"+start_load_function+"' : startCallback, '"+done_load_function+"' : completeCallback})";
+		
+	    for(var index=1;index<argumentsLength;index++){
+		    var form_id=post_form.arguments[index];
+			var sourceFormElement=document.getElementById(form_id);
+			findAndAppendInputChild(destinationFormElement, sourceFormElement);
+	    }
+	    document.body.appendChild(destinationFormElement);	
+		//destinationFormElement.submit();
+		AIM.submit(destinationFormElement, {'onStart' : start_load, 'onComplete': done_load });
+		//AIM.submit(destinationFormElement);
+		destinationFormElement.submit();
+		document.body.removeChild(destinationFormElement);
+		return false;
+	}
+
+	/** 
+	@param destinationFormElement
+	@param 
+	*/
+	function findAndAppendInputChild(destinationFormElement, element){
+		try{
+			if(element.hasChildNodes()){
+				// перебрать все дочерние элементы
+				for(var childItem in element.childNodes){
+					findAndAppendInputChild(destinationFormElement, element.childNodes[childItem]);
+				}
+			}else{
+				try{
+					if(element.tagName.toUpperCase()=='INPUT'){
+						destinationFormElement.appendChild(element);
+						return;
+					}
+				}catch(err){
+					return ;
+				}
+			}
+		}catch(err_outer){
+			return; 
+		}
+	}
+
+	
+	
+	</script>
+</head>
+
+<body onload="load_begin()">
+	<table width="100%" border="1">
+		<tr>
+			<td width="25%"><div id="div_tree"/></td>
+			<td width="75%">
+				<table width="100%" border="1" >
+					<tr>
+						<td width="100%">
+							<div id="div_menu" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="div_body" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<!--  
+	<frameset border="4" cols="25%,*" noresize="yes">
+		<frame name="frame_tree" src="http://localhost:8080/HtmlFrame/tree.html" scrolling="no">
+		<frameset border="4" rows="50%,*" noresize="no" >
+			<frame name="frame_menu" src="http://localhost:8080/HtmlFrame/menu_01.html">
+			<frame name="frame_body" src="http://localhost:8080/HtmlFrame/body_01.html">
+	    </frameset>
+	</frameset>
+ 	-->
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<script type="text/javascript">
+ 
+			function getSubStringCondition(value){
+				if(value.indexOf('OPERATION_COMPLITE_SUCCESSFULL')){
+					var beginIndex=value.indexOf("ajaxpage(");
+					if(beginIndex>=0){
+						var tempValue=value.substring(beginIndex+10);
+						var endIndexSingle=tempValue.indexOf("'");
+						var endIndexDouble=tempValue.indexOf('"');
+						if((endIndexSingle>0)&&(endIndexDouble>0)){
+							if(endIndexSingle<endIndexDouble){
+								return tempValue.substring(0,endIndexSingle);
+							}else{
+								return tempValue.substring(0,endIndexDouble);
+							}
+						}else{
+							if(endIndexSingle>0){
+								return tempValue.substring(0,endIndexSingle);
+							}else if(endIndexDouble>0){
+								return tempValue.substring(0,endIndexDouble);
+							}else{
+								// incorrect answer from server
+								return "";
+							}
+						}
+					}else{
+						// incorrect answer from server
+						return "";
+					}
+				}else{
+					// answer from server is not Positive
+					return "";
+				};
+				return "";
+			}
+		</script>		
+	</head>
+	<body>
+		<textarea id="text_area" cols="45" rows="10"  >
+		</textarea>
+		<input type="button" value="click_me" onclick="alert(getSubStringCondition(document.getElementById('text_area').value))" />
+
+	</body>
+</html>
