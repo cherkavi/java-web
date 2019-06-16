@@ -1,0 +1,37 @@
+Access to WebService:
+	http://localhost:8080/SpringWebServiceServer/personService?wsdl
+
+Classes:
+	com.test.common.Person - common object for WebService
+	com.test.service.PersonService - interface of WebService
+	com.test.service.PersonServiceImpl - implementation of WebService
+
+Web.xml:
+
+	add Spring context:
+		<listener>
+      			<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  		</listener>
+
+
+	add Spring xml configuration:
+  		<context-param>
+		      <param-name>contextConfigLocation</param-name>
+		      <!-- classpath: application-context.xml -->
+		      <param-value>/WEB-INF/application-context.xml</param-value>
+		</context-param>
+
+
+	CXF servlet:
+  		<servlet>
+		      <servlet-name>CXFServlet</servlet-name>
+		      <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		      <load-on-startup>1</load-on-startup>
+		</servlet>
+	
+	CXF servlet-mapping:
+  		<servlet-mapping>
+		      <servlet-name>CXFServlet</servlet-name>
+		      <url-pattern>/*</url-pattern>
+		</servlet-mapping>
+		
