@@ -1,0 +1,43 @@
+Web Xml part 
+
+    <servlet>
+    	<description></description>
+    	<display-name>Reporter</display-name>
+    	<servlet-name>Reporter</servlet-name>
+    	<servlet-class>report_servlet.Reporter</servlet-class>
+    	<init-param>
+	    	<param-name>reports_dir</param-name>
+	    	<param-value>c:\\temp\\</param-value>
+    	</init-param>
+    	<init-param>
+    		<param-name>reports_pattern_dir</param-name>
+	    	<param-value>c:\\temp_pattern\\</param-value>
+    	</init-param>
+    	<init-param>
+	    	<param-name>report_receipt</param-name>
+	    	<param-value>receipt.jrxml</param-value>
+    	</init-param>
+    	<init-param>
+	    	<param-name>report_barcode</param-name>
+	    	<param-value>barcode.jrxml</param-value>
+    	</init-param>
+    	
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>Reporter</servlet-name>
+    	<url-pattern>/Reporter</url-pattern>
+    </servlet-mapping>
+
+-----------------------------
+	@Override
+	public void init() throws ServletException {
+    	dir=this.getInitParameter("reports_dir");
+    	patternDir=this.getInitParameter("reports_pattern_dir");
+    	this.fileNameReceipt=this.getInitParameter("receipt.jrxml");
+    	this.fileNameBarcode=this.getInitParameter("barcode.jrxml");
+    	try{
+    		this.connectFactory=new Connector("computer_shop_cartridge");
+    	}catch(Exception ex){
+    		System.err.println("Reporter#constructor Exception: "+ex.getMessage());
+    	}
+	}
