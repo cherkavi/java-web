@@ -1,0 +1,47 @@
+<wicket:panel>
+	<form wicket:id="form_main">
+		<div align="center">
+			<table style="width:100%">
+				<tr>
+					<td colspan="2" align="center">
+						<table>
+							<tr>
+								<td valign="middle" wicket:id="radio_group">
+									<div>
+										&gt;<input type="radio" wicket:id="checked_gt" />
+									</div>
+									<div>
+										&ge;<input type="radio" wicket:id="checked_ge" />
+									</div>
+									<div>
+										&lt;<input type="radio" wicket:id="checked_lt" />
+									</div>
+									<div>
+										&le;<input type="radio" wicket:id="checked_le" />
+									</div>
+									<div>
+										=<input type="radio" wicket:id="checked_eq" />
+									</div>
+									<div>
+										&ne;<input type="radio" wicket:id="checked_ne" />
+									</div>
+								</td>
+								<td valign="middle">
+									<input type="text" width="10" wicket:id="text_number" />									
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>			
+				<tr>
+					<td align="center">
+						<input type="button" wicket:id="button_ok" /> 
+					</td>
+					<td align="center"> 
+						<input type="button" wicket:id="button_cancel" />
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</wicket:panel>

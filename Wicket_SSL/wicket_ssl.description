@@ -1,0 +1,22 @@
+Ќеобходимо пометить страницу следующей аннотацией:
+
+@RequireHttps
+public class UserArea extends BasePage {
+}
+
+(есть Bug - при первом переходе не попадает в SSL, 
+нужно либо перезагрузить страницу, либо начать манипул€ции дл€ обновлени€ страницы)
+
+
+¬ объекте, который представл€ет расширение класса WebApplication добавить:
+
+	private final static int HTTP_PORT=8080;
+	private final static int HTTPS_PORT=8443;
+	
+	private static final HttpsConfig HTTPS_CONFIG = new HttpsConfig(HTTP_PORT, HTTPS_PORT); 
+	@Override
+    protected IRequestCycleProcessor newRequestCycleProcessor() {
+		return new HttpsRequestCycleProcessor(HTTPS_CONFIG); 
+    	//
+		//return super.newRequestCycleProcessor();
+    }

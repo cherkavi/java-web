@@ -1,0 +1,41 @@
+1. необходимо создание SSL соединения для Tomcat Apache.
+	(есть два пути создания SSL соединений, пойдем по следующему:)
+
+	1.1 - создать .keystroke
+  	C:\> %JAVA_HOME%\bin\keytool -genkey -alias tomcat -keyalg RSA
+	можно добавить флаг -keystore c:/ иначе файл .keystore будет создан в %USER_HOME%
+	
+	1.2 - добавить следующий XML тэг в файл %CATALINA_HOME% (%CATALINA_BASE%)
+    <Connector  port="8443" 
+		scheme="https" 
+		secure="true"
+                SSLEnabled="true"
+		<!-- полный путь к файлу сертификатов .keystore -->
+		keystoreFile="${user.home}\.keystore" 
+		sslProtocol="TLS"
+               	maxThreads="150" 
+		<!-- пароль, который был использован при создании .keystore -->
+               	keystorePass="changeit" 
+		 />
+
+    <Connector  port="8443" 
+		scheme="https" 
+		secure="true"
+                SSLEnabled="true"
+		<!-- убрать комментарий при внедрении: полный путь к файлу сертификатов .keystore -->
+		keystoreFile="c:\.keystore" 
+		sslProtocol="TLS"
+               	maxThreads="150" 
+		<!-- убрать комментарий при внедрении: пароль, который был использован при создании .keystore -->
+               	keystorePass="changeit" 
+
+		clientAuth="false"
+		protocol="HTTP/1.1"
+		 />
+
+
+	1.3 проверить наличие переменных %CATALINA_HOME% и %CATALINA_BASE%
+	(должны указывать на один и тот же каталог, в котором находится Apache Tomcat 6.x)
+
+Конфигурация для Eclipse
+D:\eclipse_workspace\Servers\Tomcat v6.0 Server at localhost-config\

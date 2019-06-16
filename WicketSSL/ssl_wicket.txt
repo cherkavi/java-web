@@ -1,0 +1,38 @@
+1. необходимо создание SSL соединения для Tomcat Apache.
+	(есть два пути создания SSL соединений, пойдем по следующему:)
+
+	1.1 - создать .keystroke
+  	C:\> %JAVA_HOME%\bin\keytool -genkey -alias tomcat -keyalg RSA
+	можно добавить флаг -keystore c:/ иначе файл .keystore будет создан в %USER_HOME%
+	
+	1.2 - добавить следующий XML тэг в файл %CATALINA_HOME% (%CATALINA_BASE%)
+    <Connector  port="8443" 
+		scheme="https" 
+		secure="true"
+                SSLEnabled="true"
+		<!-- полный путь к файлу сертификатов .keystore -->
+		keystoreFile="${user.home}/.keystore" 
+		sslProtocol="TLS"
+               	maxThreads="150" 
+		<!-- пароль, который был использован при создании .keystore -->
+               	keystorePass="changeit" 
+		 />
+
+	1.3 проверить наличие переменных %CATALINA_HOME% и %CATALINA_BASE%
+	(должны указывать на один и тот же каталог, в котором находится Apache Tomcat 6.x)
+
+2. Wicket Apache
+	2.1 - добавить в класс, который расширяет WebApplication следующий код
+
+	private final static int HTTP_PORT=8080;
+	private final static int HTTPS_PORT=8443;
+	private static final HttpsConfig HTTPS_CONFIG = new HttpsConfig(HTTP_PORT, HTTPS_PORT); 
+	@Override
+    	protected IRequestCycleProcessor newRequestCycleProcessor() {
+		return new HttpsRequestCycleProcessor(HTTPS_CONFIG); 
+    		//
+		//return super.newRequestCycleProcessor();
+    	}
+
+	2.2 пометить все файлы, которым необходимо SSL соединение как 
+	@RequireHttps	

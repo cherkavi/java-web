@@ -1,0 +1,55 @@
+<html>
+	<head>
+            <title wicket:id="field_label_title"></title>
+	</head>	
+	<body>
+            <table>
+                <tr>
+                    <td><center> NAME: </center></td>
+                </tr>
+                <tr>
+                    <td> 
+                        <input type="text" wicket:id="field_input_name"/> 
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center> PHONE_NUMBER: </center>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 
+                        <input type="text" wicket:id="field_input_phone"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center> CATEGORY: </center>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center"> 
+                        <select type="text" wicket:id="field_combobox_category" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td align="center">
+                                    <input type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" wicket:id="close_OK"></input>
+                                </td>
+                                <td align="center">
+                                    <input type="button" value="Cancel" wicket:id="close_Cancel"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+             </table>
+             <div wicket:id="field_modal_warning" />
+	</body>
+</html>

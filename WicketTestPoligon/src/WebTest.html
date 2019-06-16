@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>Wicket Test Poligon</title>
+	</head>
+<body>
+	<span wicket:id="label"> </span>
+	<form wicket:id="form_main">
+		<input type="checkbox" wicket:id="checkbox" /><br>
+		<a wicket:id="link_a">this is first link</a><br>
+		<a wicket:id="link_b">this is second link</a><br>
+		<input type="submit" value="submit" />
+	</form>
+	<br>
+	<br>
+	<br>
+	<form wicket:id="form_choice_group">
+		<span wicket:id="radio_choice">
+		</span>
+		<input type="submit" value="choice_group submit" wicket:id="submit_radio_choice" />
+	</form>	
+	<br>
+	<br>
+	<br>
+	<form wicket:id="form_radio_button">
+		<span wicket:id="radio_group">
+			<span wicket:id="radio_button_list" >
+				<input type="radio" wicket:id="radio_button" /> 
+				<span wicket:id="radio_button_label"> </span>
+			</span>
+		</span>
+		<input type="submit" value="value" wicket:id="submit_radio_button"/>
+	</form>
+	
+</body>
+</html>

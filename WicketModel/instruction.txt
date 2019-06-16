@@ -1,0 +1,21 @@
+getObject может вызываться несколько раз, а освобождение (detach ) происходит только один раз
+
+		/** модель для получения данных из базы обо всех элементах*/
+		IModel<List<Photo>> listPhotoModel=new IModel<List<Photo>>(){
+			private final static long serialVersionUID=1L;
+			private List<Photo> returnValue=null;
+			@Override
+			public List<Photo> getObject() {
+				if(returnValue==null){
+					returnValue=getAllPhotoRecords();
+				}
+				return returnValue;
+			}
+			@Override
+			public void setObject(List<Photo> arg0) {
+			}
+			@Override
+			public void detach() {
+				returnValue=null;
+			}
+		};
