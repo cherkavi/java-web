@@ -1,0 +1,55 @@
+/*SEC:BUTTON-DEFAULT:*/
+/*RULE:TOP-LEFT*/
+.z-button .z-button-tl{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*RULE:BOTTOM-LEFT*/
+.z-button .z-button-bl{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*RULE:CENTER-LEFT*/
+.z-button .z-button-cl{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*RULE:CENTER-MIDDLE*/
+.z-button .z-button-cm{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*RULE:CENTER-RIGHT*/
+.z-button .z-button-cr{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*RULE:TOP-MIDDLE*/
+.z-button .z-button-tm{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*RULE:TOP-RIGHT*/
+.z-button .z-button-tr{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*RULE:BOTTOM-MIDDLE*/
+.z-button .z-button-bm{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*RULE:BOTTOM-RIGHT*/
+.z-button .z-button-br{
+	background-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*SEC_E*//*SEC:LABEL:anchor_link*/
+/*RULE:BASIC*/
+.anchor_link.z-label {
+	border-style : dashed; /*PRO*/
+	border-width : thin; /*PRO*/
+	border-color : #FF0000; /*PRO*/
+}
+/*RULE_E*/
+/*SEC_E*/

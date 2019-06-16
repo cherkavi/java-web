@@ -1,0 +1,70 @@
+<?page title="example" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="example" border="normal" id="windowMain" onCreate="beginInit()" onFulfill="endInit()" width="300">
+		<vbox align="center" width="100%">
+			<label id="label1">Click this button for input </label>
+			<textbox id="t1" value="this is textbox value"></textbox>
+			<button id="button1" label="click" onClick="buttonClick()"></button>
+			<label id="label2" visible="false" onClick="onLabelReaction()" class="anchor_link">flag of parameter</label>
+			<button id="button_show_servlet" label="GoTo Servlet" onClick="buttonServlet()" />
+			<separator />
+			<button onClick="showModal()" label="show modal" />
+		</vbox>
+		<zscript>
+			<![CDATA[
+			         import example.first.ShareObject;
+			         import org.zkoss.zk.ui.event.EventListener;
+			         
+			         String value1=null;
+			         
+			         /** реакция на нажатие Label */
+			         private void onLabelReaction(){
+			        	 System.out.println("LabelReaction: "+t1.getValue());
+			         }
+			         
+			         private void buttonClick(){
+			        	 System.out.println("Click the button:"+execution.getParameter("value"));
+						 alert(value1);
+						 // получить имя браузера
+						 System.out.println("UserAgent:"+execution.getUserAgent());
+						 // установить атрибут сессии
+						 session.setAttribute("user_zk_attribute",new ShareObject(3,"three"));
+						 label2.setVisible(!label2.isVisible());
+			         }
+			         
+			         private void buttonServlet(){
+			        	 // перенаправить вызов на сервлет 
+			        	 execution.sendRedirect("UserServlet");
+			         }
+			         
+			         /** первоначальная инициализация страницы */
+			         private void beginInit(){
+			        	 System.out.println("begin init");
+			        	 System.out.println("Request parameter: value="+execution.getParameter("value"));
+			        	 if(execution.getParameter("show_label")!=null){
+			        		 label2.setVisible(true);
+			        		 value1=execution.getParameter("show_label");
+			        	 }
+			         }
+			         
+			         private void showModal(){
+			        	 Window win=new Window("modal window example", "normal", true);
+			        	 final Textbox textbox=new Textbox("this is temp value");
+			        	 textbox.setParent(win);
+			        	 win.addEventListener("onClose",new EventListener(){
+			        		 public void onEvent(Event event) throws Exception{
+			        			System.out.println("event onClose, value:"+textbox.getValue());
+			        		 }
+			        	 });
+			        	 win.setWidth("100px");
+			        	 win.setHeight("100px");
+			        	 win.setParent(windowMain);
+			        	 // windowMain.getPage();
+			        	 
+			        	 win.doModal();
+			        	 // win.onModal();
+			         }
+		]]>
+		</zscript>
+	</window>
+</zk>

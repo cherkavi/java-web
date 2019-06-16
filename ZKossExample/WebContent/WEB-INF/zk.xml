@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	Created by ZK Studio
+-->
+
+<zk>
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri>/timeout.zul</timeout-uri><!-- An empty URL can cause the browser to reload the same URL -->
+	</device-config>
+
+	 <richlet>
+   		<richlet-class>example.richlet.UserRichlet</richlet-class>
+   		<richlet-url>/user.zul</richlet-url> 
+ 	</richlet>
+
+	<!--  
+	 <richlet>
+	 	<richlet-name>user_richlet</richlet-name>
+   		<richlet-class>example.richlet.UserRichlet</richlet-class> 
+ 	</richlet>
+ 	
+ 	<richlet-mapping>
+ 		<richlet-name>user_richlet</richlet-name>
+ 		<url-pattern>/user.zul</url-pattern>
+ 	</richlet-mapping>
+ 	 -->
+</zk>
