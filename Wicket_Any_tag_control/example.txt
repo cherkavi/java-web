@@ -1,0 +1,12 @@
+Example for change any ATTRIBUTES into any HTML TAG
+
+------- HTML Markup Part -------
+<link rel="stylesheet" type="text/css" wicket:id="css_type" />
+
+
+
+------- Java Part ---------
+
+MarkupContainer container=new MarkupContainer("css_type"){};
+container.add(new SimpleAttributeModifier("href","energy_page.css"));
+this.add(container);

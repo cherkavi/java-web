@@ -1,0 +1,18 @@
+пересылка на сервер компонентов, и проверка ввода в поля:
+
+необходимо 
+	extends AjaxFormComponentUpdatingBehavior
+		super("onkeyup")
+
+	или	
+
+	extends AjaxFormSubmitBehavior
+		super(form, "onkeyup")
+
+
+(для обновляемых через AjaxRequestTarget компоненты нужно установить следующие 
+аттрибуты:
+
+	this.imageOk.setOutputMarkupId(true); // обязательный
+	this.imageOk.setOutputMarkupPlaceholderTag(true); // если будут изменяться тэги компонента, например style="display:none"
+)

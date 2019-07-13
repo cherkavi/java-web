@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      >
+    <h:head>
+        <f:loadBundle  basename="gui.actions.session.ParserSession" var="message" />
+    </h:head>
+
+    <h:body>
+        <table border="1">
+            <tr>
+                <td> #{message.parser_shop}</td>
+                <td>#{parser_session.shop}</td>
+            </tr>
+            <tr>
+                <td> #{message.parser_begin}</td>
+                <td>#{parser_session.date}</td>
+            </tr>
+            <tr>
+                <td> #{message.parser_result}</td>
+                <td>#{parser_session.result}</td>
+            </tr>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        #{message.logger_level}
+                    </th>
+                    <th>
+                        #{message.logger_message}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <ui:repeat value="#{parser_session.list}" var="element">
+                    <tr>
+                        <td>#{element.level}</td>
+                        <td>#{element.message}</td>
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+    </h:body>
+</html>

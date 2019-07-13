@@ -1,0 +1,14 @@
+<table border="1">
+	<tr>
+                <th><a wicket:id="field_ajax_link_1">Name</a></th>
+                <th><a wicket:id="field_ajax_link_2">Phone Number</a></th>
+                <th><a wicket:id="field_ajax_link_3">Category</a></th>
+	</tr>
+	#foreach($contact in $contacts)
+	<tr>
+		<td>${contact.column_1}</td>
+		<td>${contact.column_2}</td>
+		<td>${contact.column_3}</td>
+	</tr>
+	#end
+</table>

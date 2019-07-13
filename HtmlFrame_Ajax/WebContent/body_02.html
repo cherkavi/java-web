@@ -1,0 +1,57 @@
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+
+
+	function mySubmitForm(pFormName) {
+		var result_str = "";
+
+		var formElement = document.getElementById(pFormName);
+		for ( var i = 0; i < formElement.length; i++) {
+			myName = formElement[i].name;
+			myValue = formElement[i].value;
+			if (formElement[i].type == "checkbox") {
+				myCheckBox = formElement[i];
+				if (!myCheckBox.checked) {
+					myName = "";
+					myValue = "";
+				} else {
+					myValue = "Y";
+				}
+			}
+			if (formElement[i].type == "radio") {
+				myCheckBox = formElement[i];
+				if (!myCheckBox.checked) {
+					myName = "";
+					myValue = "";
+				}
+			}
+			if (!(myName == null || myName == "")) {
+				result_str = result_str + myName + "="
+						+ replaceForUrl(encodeURI(myValue)) + "&";
+			}
+		}
+
+		//window.alert(result_str);
+		return result_str;
+	}
+
+</script>
+</head>
+<body>
+	<br>
+	<h2>body 02</h2>
+	<br><div onclick="ajaxpage('http://localhost:8080/HtmlFrame_Ajax/body_03.html', 'div_body')">
+		<strong>  body 03 </strong>
+	    </div>
+	   <form id="form_1" action="http://localhost:8080/HtmlFrame_Ajax/GetFile" method="post" onsubmit="return AIM.submit(this)" enctype="multipart/form-data">
+	   		<input type="file" name="file_1" id="file_1" />
+<input 	type="button" 
+		value="send file to server" 
+		onclick="post_form('http://localhost:8080/HtmlFrame_Ajax/GetFile','form_1')"/>	   
+		</form> 
+	    
+</body>
+</html>

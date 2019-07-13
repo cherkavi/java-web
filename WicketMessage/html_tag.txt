@@ -1,0 +1,4 @@
+
+<input type="submit" value="Default text"
+
+    wicket:message="value:helloworld,title:hellotitle"/>

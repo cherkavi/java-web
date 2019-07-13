@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      >
+    <h:head>
+        <f:loadBundle basename="gui.actions.ActionList" var="message" />
+        <title>#{message.title}</title>
+    </h:head>
+    
+    <h:body>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>
+                        #{message.header_date}
+                    </th>
+                    <th>
+                        #{message.header_state}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <h:form>
+                            <h:commandButton value="#{message.button_create}" action="#{action_list.createNewAndStartIt}" />
+                        </h:form>
+                    </td>
+                </tr>
+                <ui:repeat  value="#{action_list.list}" var="list_element">
+                    <tr>
+                        <td>
+                            <h:form>
+                                <h:commandLink action="#{action_list.linkClick}">
+                                    <h:outputText value="#{list_element.date}" />
+                                </h:commandLink>
+                            </h:form>
+                        </td>
+                        <td>
+                            <h:form>
+                                <h:commandLink action="#{action_list.linkClick}">
+                                    <h:outputText value="#{list_element.state}" />
+                                </h:commandLink>
+                            </h:form>
+                        </td>
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+    </h:body>
+</html>

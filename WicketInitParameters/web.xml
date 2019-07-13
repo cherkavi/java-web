@@ -1,0 +1,18 @@
+    <filter>
+
+        <filter-name>astronomy_application</filter-name>
+
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+
+        <init-param>
+          <param-name>applicationClassName</param-name>
+          <param-value>window.Application</param-value>
+        </init-param>
+
+<!--  параметр для чтения  -->
+        <init-param>
+        	<param-name>unix_path_to_image</param-name>
+        	<param-value>/usr/share/astronomy/image/</param-value>
+        </init-param>
+
+    </filter>

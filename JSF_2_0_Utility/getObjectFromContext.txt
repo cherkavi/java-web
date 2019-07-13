@@ -1,0 +1,7 @@
+FacesContext context=FacesContext.getCurrentInstance();
+UserHolder userHolder=(UserHolder)context.getApplication().evaluateExpressionGet(context, "#{user_holder}", UserHolder.class);
+
+
+@ManagedBean(name="user_holder")
+@SessionScoped
+public class UserHolder {}

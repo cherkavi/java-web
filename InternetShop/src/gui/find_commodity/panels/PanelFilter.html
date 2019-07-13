@@ -1,0 +1,61 @@
+<wicket:panel>
+	<form wicket:id="form_main">
+	<table width=400>
+		<tr>
+			<!--  Commodity Name -->
+			<td width=100>
+				<table>
+					<tr align="center" >
+						<td width=100><span wicket:id="label_commodity_name"></span></td>
+					</tr>
+					<tr>
+						<td width=100><input type="text" wicket:id="textfield_commodity_name" /></td>
+					</tr>
+				</table>
+			</td>
+			<!--  Class id -->
+			<td width=100>
+				<table>
+					<tr>
+						<td width=100><span wicket:id="label_class_id"></span></td>
+					</tr>
+					<tr>
+						<td width=100><select wicket:id="choice_class_id"></select></td>
+					</tr>
+				</table>
+			</td>
+			<!--  Price Min -->
+			<td width=100>
+				<table>
+					<tr>
+						<td width=100><span wicket:id="label_price_min"></span></td>
+					</tr>
+					<tr>
+						<td width=100><input type="text" wicket:id="textfield_price_min" width=30 /></td>
+					</tr>
+				</table>
+			</td>
+			<!--  Price Max -->
+			<td width=100>
+				<table>
+					<tr>
+						<td width=100><span wicket:id="label_price_max"></span></td>
+					</tr>
+					<tr>
+						<td width=100><input type="text" wicket:id="textfield_price_max" width=30 /></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table width=400>
+		<tr>
+			<td>
+				<center>
+					<input type="submit" value="Filter" wicket:id="button_filter"  width="300"/> 
+				</center>
+			</td>
+		</tr>
+	</table>
+	</form>
+</wicket:panel>

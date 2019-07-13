@@ -1,0 +1,37 @@
+To send and retrieve cookies, use the WebResponse and WebRequest objects, respectively. These in turn can be obtained from the RequestCycle, which can be retrieved by calling the getRequestCycle method on a Component. Thus to create a cookie:
+
+        ((WebResponse)getRequestCycle().getResponse()).addCookie(new Cookie("cookieName", "cookieValue"));
+
+and to retrieve all cookies:
+
+        Cookie[] cookies = ((WebRequest)getRequestCycle().getRequest()).getCookies();
+
+Alternatively, anywhere on the thread that is responding to a web request:
+
+        ((WebResponse)RequestCycle.get().getResponse()).addCookie(new Cookie("cookieName", "cookieValue"));
+
+and similarly for retrieving cookies.
+
+
+	/** получить из списка Cookie значение по указанному имени  
+	 * @param list - список всех доступных Cookie
+	 * @param name - наименование Cookie
+	 * */
+	private String getCookieByName(Cookie[] list, String name){
+		String returnValue=null;
+		for(int counter=0;counter<list.length;counter++){
+			if(list[counter].getName().equalsIgnoreCase(name)){
+				returnValue=list[counter].getValue();
+				break;
+			}
+		}
+		return returnValue;
+	}
+
+
+
+Finally, the casts can be avoided if you are within a subclass of WebPage:
+
+        getWebRequestCycle().getWebResponse().addCookie(new Cookie("cookieName", "cookieValue"));
+
+and similarly for retrieving cookies.

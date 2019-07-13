@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1251"?>
+    <jnlp
+      spec="1.0+"
+      codebase="http://localhost:8080/JMS_WebStart_j2ee"
+      href="client.jnlp">
+      <information>
+        <title>Test JMS</title>
+        <vendor>Бон-Клуб</vendor>
+        <homepage href="www.bon-club.com.ua"/>
+        <description>Test JMS </description>
+        <offline-allowed/>
+      </information>
+      <security>
+          <all-permissions/>
+      </security>
+      <resources>
+        <j2se version="1.6+"/>
+        <jar href="JMS_WebStart.jar"/>
+      </resources>
+      <application-desc main-class="example.EnterPoint">
+      	<argument>session number print here </argument>
+      </application-desc>
+    </jnlp>
+    

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      >
+    <h:head>
+        <f:loadBundle basename="gui.actions.Action" var="message" />
+        <title>#{message.title}</title>
+    </h:head>
+
+    <h:body>
+        <div >
+        <h:form>
+        	<h:dataTable value="#{action.list}" var="element" border="1">
+        		<h:column>
+        			<f:facet name="header">
+        				<h:outputText value="#{message.head_start_page}" />
+        			</f:facet>
+        			
+						<h:commandLink action="#{action.linkBack}" >
+						    #{element.startPage}
+						</h:commandLink>
+        		</h:column>
+
+        		<h:column>
+        			<f:facet name="header">
+	        			<h:outputText value="#{message.head_parse_begin}" />
+        			</f:facet>
+							<h:commandLink action="#{action.linkBack}" >
+			        			#{element.parseBegin}
+	        				</h:commandLink>
+        		</h:column>
+
+        		<h:column>
+        			<f:facet name="header">
+		    			<h:outputText value="#{message.head_parse_result}" />
+        			</f:facet>
+							<h:commandLink action="#{action.linkBack}" >
+			        			#{element.result}
+	        				</h:commandLink>
+        		</h:column>
+        	</h:dataTable>
+	</h:form>
+            <br />
+            <h:form>
+                <h:commandButton action="#{action.linkBack}" value="#{message.goto_list}" style="width: auto;"/>
+            </h:form>
+        </div>
+
+    </h:body>
+
+</html>

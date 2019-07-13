@@ -1,0 +1,1 @@
+userAgent=((WebClientInfo)this.getRequestCycle().getClientInfo()).getUserAgent();

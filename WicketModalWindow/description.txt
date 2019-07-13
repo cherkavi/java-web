@@ -1,0 +1,23 @@
+1. Добавить  элемент, который будет относиться к окну пользователя 
+	<div wicket:id="modal_find_user" />
+
+2. Создать окно с зарегестрированным слушателем закрытия окна
+
+		this.modalFindUser=new ModalWindow("modal_find_user"){
+			private final static long serialVersionUID=1L;
+			@Override
+			public void close(AjaxRequestTarget target) {
+				super.close(target);
+				onModalWindowClose(target);
+			}
+		};
+		this.add(this.modalFindUser);
+
+3. Отобразить окно можно двумя способами:
+	3.1 - задать создателя для окна
+		this.modalFindUser.setPageCreator(<PageCreator>);
+
+	3.2 - добавить в качестве содержимого панель
+		this.pageFindUser=new FindUser(this.modalFindUser.getContentId(), this.modalFindUser);
+		this.modalFindUser.setContent(this.pageFindUser);
+		this.modalFindUser.show(target);

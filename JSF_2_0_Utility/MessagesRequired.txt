@@ -1,0 +1,11 @@
+например, пользователь ввел в регистрационных полях неправильные данные ( т.е. логин и/или пароль не опознаны ).
+на странице XHTML нужно расположить следующий тэг
+
+	<h:messages id="command_button_message"/>
+
+в объекте-обработчике нужно поместить:
+	FacesContext context=FacesContext.getCurrentInstance();
+	context.addMessage("command_button_message", new FacesMessage("user not found"));
+
+или же использовать:
+	<h:message for="id_of_element" />

@@ -1,0 +1,49 @@
+----------------
+Если необходимо поставить Ajax соединение для компонента, основываясь на его событии:
+
+            COMPONENT.add(new AjaxEventBehavior("onChange") {
+                protected void onEvent(AjaxRequestTarget ajaxRequestTarget) {
+                    out("update");
+                    create_and_fill_category();
+                    create_list();
+                }
+            });
+----------------
+Если необходимо заменять элементы, используя технологию Ajax, тогда:
+нужно создать компонент, 
+
+private WebMarkupContainer field_ajax_container;
+
+у которого установить свойство 
+field_ajax_container.setOutputMarkupId(true)
+
+и который нужно добавлять к ответу
+ajaxRequestTarget.addComponent(field_ajax_container);
+----------------
+тэг <img>
+ДОЛЖЕН БЫТЬ НЕ ЗАКРЫТЫМ (т.е. НЕ допускается: <img></img> или <img/>)
+
+-----------------
+Модальные окна - модальны только по внешнему виду, 
+на самом деле, во время течения кода, модальное окно не останавливается 
+
+        this.field_button_category.add(new AjaxFormComponentUpdatingBehavior("onClick"){
+            protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
+                field_modal_create_category.show(ajaxRequestTarget);
+                ajaxRequestTarget.appendJavascript("document.all('"+field_button_search.getId()+"').click()");
+                //field_panel_data.create_list(field_dropdown_category_index);
+                //ajaxRequestTarget.addComponent(field_ajax_container);
+            }
+в данном случае будет сразу же будет вызвана функция нажатия кнопки, 
+хотя пользователь будет видеть модальное окно
+
+нужно использовать CallBack функцию:
+import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow.*;
+                // calling callback function
+                field_modal_create_category.setWindowClosedCallback(new WindowClosedCallback(){
+                    public void onClose(AjaxRequestTarget ajaxRequestTarget) {
+                        field_panel_data.create_list(field_dropdown_category_index);
+                        ajaxRequestTarget.addComponent(field_ajax_container);
+                    }
+                });
+

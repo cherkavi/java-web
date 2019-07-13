@@ -1,0 +1,38 @@
+<html>
+	<body>
+            <style type="text/css">
+                .ClassForH1 {color: red; width 35em}
+            </style>
+            <!-- page begin-->
+            <h3 class="ClassForH1">Phone Directory<br>Contact listings</h3>
+            <!-- combobox categories -->
+            <select wicket:id="field_dropdown_category"/>
+            <input type="button" wicket:id="field_button_category">
+            <span wicket:id="field_modal_create_category" />
+                <br>
+                <br>
+            <!-- form search   \WEB-INF\classes\task\-->
+            <form wicket:id="field_form_search">
+                <input type="submit" value="Search" wicket:id="field_button_search" />
+                <input type="text" wicket:id="field_textfield_search" size="25"/>
+                <span wicket:id="field_link_empty" >
+                    <img wicket:id="field_image_empty"  border="0" >
+                </span>
+            </form>
+            <br/>
+            <!-- table for output database data-->            
+            <div wicket:id="field_ajax_panel_data">
+                <div wicket:id="field_panel_data">
+                     
+                </div>
+            </div>
+            <!-- create new contact  -->
+            
+            <!-- "Save changes" "Revert" -->
+            <a wicket:id="field_link_create_contakt"> Create new contact </a>
+            <div wicket:id="field_modal_create_contakt"/>
+            <br>
+            <input type="button" value="Save changes" wicket:id="field_button_save" />
+            <input type="button" value="Revert" wicket:id="field_button_revert" />
+	</body>
+</html>

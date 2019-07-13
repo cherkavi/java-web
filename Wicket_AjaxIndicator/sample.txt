@@ -1,0 +1,42 @@
+первый вариант:
+		class KeyDownBehavior extends AjaxEventBehavior implements IAjaxIndicatorAware{
+			public KeyDownBehavior(){
+				super("onkeydown");
+			}
+			@Override
+			protected void onEvent(AjaxRequestTarget arg0) {
+				System.out.println("event on");
+				try{
+					Thread.sleep(2000);
+				}catch(Exception ex){};
+				System.out.println("event off");
+			}
+
+			@Override
+			public String getAjaxIndicatorMarkupId() {
+				return "nick_indicator";
+			}
+			
+		}
+		editNick.add(new KeyDownBehavior());
+
+
+
+
+		editNick.add(new AjaxEventBehavior("onkeydown") {
+			private final static long serialVersionUID=1L;
+			
+			@Override
+			protected void onEvent(AjaxRequestTarget target) {
+				System.out.println("event on: "+Main.this.editNick.getModelObject());
+				try{
+					Thread.sleep(2000);
+				}catch(Exception ex){};
+				System.out.println("event off");
+			}
+			
+			@Override
+			protected String findIndicatorId() {
+				return "nick_indicator";
+			}
+		});

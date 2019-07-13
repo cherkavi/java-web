@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
+	<persistence-unit name="entity_example">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+		<class>example.eclipselink.ExampleEntity</class>
+		<properties>
+			<property name="eclipselink.jdbc.driver" value="org.firebirdsql.jdbc.FBDriver" />
+			<property name="eclipselink.jdbc.url" value="jdbc:firebirdsql://localhost:3050/d:/jpa_example.gdb?sql_dialect=3" />
+			<!-- I work in this example without user / password.-->
+			<property name="eclipselink.jdbc.user" value="SYSDBA" />
+			<property name="eclipselink.jdbc.password" value="masterkey" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<!--  property name="eclipselink.ddl-generation" value="drop-and-create-tables" / -->
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+		</properties>
+
+	</persistence-unit>
+</persistence>

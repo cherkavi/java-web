@@ -1,0 +1,5 @@
+		FacesContext context=FacesContext.getCurrentInstance();
+
+                ViewHandler viewHandler=context.getApplication().getViewHandler();
+                UIViewRoot view=viewHandler.createView(context, "/index.xhtml");
+                context.setViewRoot(view);

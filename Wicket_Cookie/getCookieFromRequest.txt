@@ -1,0 +1,20 @@
+Cookie[] list=((ServletWebRequest)this.getRequestCycle().getRequest()).getCookies();
+
+
+
+
+	/** получить из списка Cookie значение по указанному имени  
+	 * @param list - список всех доступных Cookie
+	 * @param name - наименование Cookie
+	 * */
+	private String getCookieByName(Cookie[] list, String name){
+		String returnValue=null;
+		for(int counter=0;counter<list.length;counter++){
+			if(list[counter].getName().equalsIgnoreCase(name)){
+				returnValue=list[counter].getValue();
+				break;
+			}
+		}
+		return returnValue;
+	}
+

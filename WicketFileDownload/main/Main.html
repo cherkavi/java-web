@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		img{
+			border:0px;
+		}
+		.span_main{
+			width:40%;
+			margin-left: 50px;
+			margin-top: 50px;
+			background-color: white;
+			border-color:fuchsia;
+			border-right-color: green;
+			border-right-style: solid;
+			border-right-width: 2px;
+
+			border-left-color: green;
+			border-left-style: solid;
+			border-left-width: 2px;
+		}
+		.edit_sample{
+			width:70%;
+			margin-left: 20px;
+			
+		}
+		.button_left{
+			width:40%;
+			height:40px;
+			margin-left:10px;
+			border-color: red;
+			border-style:solid;
+			border-width:1px;
+			float:left;
+			overflow:hidden;
+		}
+		.button_body_left{
+			float:left;
+			position:relative;
+			overflow:hidden;
+			background-image: url("images/body_left.png");
+			height:40px;
+			width:8px;
+		}
+		.button_body{
+			float:left;
+			position:relative;
+			overflow:hidden;
+			background-image: url("images/body.png");
+			background-repeat: repeat-x;
+			height:40px;
+			width:137px;
+			
+		}
+		.button_body_right{
+			float:right;
+			position:relative;
+			overflow:hidden;
+			background-image: url("images/body_right.png");
+			height:40px;
+			width:16px;
+		}
+		a:link.button_left{
+			text-decoration: none;
+		}
+		a:visited.button_left{
+			text-decoration: none;
+		}
+		a:active.button_left{
+			text-decoration: none;
+		}
+		a:hover.button_left{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div >
+		<form wicket:id="form_main" class="span_main">
+ 			<input type="text" wicket:id="edit_one" class="edit_sample"/><br>
+			<input type="text" wicket:id="edit_two" class="edit_sample"/><br>
+			<a class="button_left" wicket:id="span_one">
+				<nobr> 
+					<div class="button_body_left">&nbsp</div>
+					<div class="button_body">
+						<div style="margin-left:auto;margin-top: auto;margin-right:auto;margin-bottom:auto;">
+							this is text
+						</div>
+					</div>
+					<div class="button_body_right">&nbsp</div>
+				</nobr>
+			</a>
+			<a class="button_left" wicket:id="span_two">
+				button_two
+			</a>
+			<br>
+			<br>
+			<br>
+		</form>
+	</div>
+</body>
+</html>

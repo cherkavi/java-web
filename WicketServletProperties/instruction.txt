@@ -1,0 +1,19 @@
+------------ web.xml Example ------------------
+<filter>
+        <filter-name>astronomy_application</filter-name>
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>window.Application</param-value>
+        </init-param>
+</filter>
+
+------------ Application.java -----------------
+
+method for get Properties:
+@Override
+public void init(){
+	this.getInitParameter(key);
+}
+
+

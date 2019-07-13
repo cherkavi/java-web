@@ -1,0 +1,83 @@
+нужно обернуть все элементы группы в один Markup элемент, который будет иметь тип org.apache.wicket.markup.html.form.RadioGroup;
+данный элемент должен иметь Model, Generic которого, такой же как и у моделей Radio
+( в примере ниже Generic-String )
+
+
+------------------------------------------------------------------------------
+Markup:
+   <form wicket:id="form_main" >
+	<table>
+		<span wicket:id="radio_group">
+			<tr>
+				<td>
+					<input type="radio" wicket:id="choice_edit" />
+				</td>
+
+				<td>
+					<span wicket:id="label_edit" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<input type="radio" wicket:id="choice_select" />
+				</td>
+
+				<td>
+					<span wicket:id="label_select" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<input type="button"  wicket:id="button_ok" /> 
+				</td>
+				<td>
+					<input type="button"  wicket:id="button_cancel" /> 
+				</td>
+			</tr>
+		</span>
+	</table>
+   </form>
+------------------------------------------------------------------------------
+
+Java Code:
+		Form<?> formMain=new Form<Object>("form_main");
+		this.add(formMain);
+		
+		RadioGroup<String> radioGroup=new RadioGroup<String>("radio_group", modelGroup);
+		formMain.add(radioGroup);
+		
+		// radio Edit
+		Radio<String> choiceEdit=new Radio<String>("choice_edit", modelEdit, radioGroup);
+		radioGroup.add(choiceEdit);
+		radioGroup.add(new Label("label_edit", "Edit"));
+		
+		
+		// radio Select 
+		Radio<String> choiceSelect=new Radio<String>("choice_select", modelSelect, radioGroup);
+		radioGroup.add(choiceSelect);
+		radioGroup.add(new Label("label_select", "Select"));
+		
+		AjaxButton buttonOk=new AjaxButton("button_ok"){
+			private final static long serialVersionUID=1L;
+			@Override
+			protected void onSubmit(AjaxRequestTarget target, 
+									Form<?> form) {
+				onButtonOk(target);
+			}
+		};
+		buttonOk.add(new SimpleAttributeModifier("value","Ok"));
+		radioGroup.add(buttonOk);
+		
+		AjaxButton buttonCancel=new AjaxButton("button_cancel"){
+			private final static long serialVersionUID=1L;
+			@Override
+			protected void onSubmit(AjaxRequestTarget target, 
+									Form<?> form) {
+				onButtonCancel(target);
+			}
+		};
+		buttonCancel.add(new SimpleAttributeModifier("value","Cancel"));
+		radioGroup.add(buttonCancel);
+

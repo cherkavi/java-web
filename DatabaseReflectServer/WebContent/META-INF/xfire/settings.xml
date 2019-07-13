@@ -1,0 +1,11 @@
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+ 
+  <service>
+    <name>RecordListener</name>
+    <namespace>computer_shop_cartridge</namespace>
+    <serviceClass>database_reflect.server_listener.ITableRecordListener</serviceClass>
+    <implementationClass>database_reflect.server_listener.RecordListener</implementationClass>
+  </service>
+  
+    
+</beans>

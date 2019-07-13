@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<delay>5</delay>
+	<delay_error>15</delay_error>
+	<url_path>http://localhost:8080/ParkingHearBeatServer/Gate</url_path>
+	<module_id>112</module_id>
+</settings>

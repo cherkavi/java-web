@@ -1,0 +1,39 @@
+<?page title="Auto Generated index.zul"?>
+<window title="Hello World!!" border="normal" width="200px" id="windowMain" position="right,top" sizable="true" tooltiptext="this is tooltip text" droppable="true" closable="true">
+
+	<label value="You are using: ${desktop.webApp.version}"/>
+	<textbox id="t1" value="this is simple text"> </textbox>
+	<button label="JavaScript inner code" id="b1" orient="horizontal" draggable="true">
+		<attribute name="onClick">
+			<![CDATA[
+			         System.out.println("Click to button: "+this.getClass().getName());
+			         alert("Test");
+			         // перенаправление
+			         execution.sendRedirect("temp_example.zul");
+			         // получение доступа к сессии 
+				     // windowMain.getDesktop().getSession()
+			]]>
+		</attribute>
+	</button>
+	<separator></separator>
+	
+	<button label="Java Script function" id="b2" onClick="showAlert()">
+	</button>
+	
+	<button label="Sample button" id="b3" onClick="b3.setVisible(false);"></button>
+	
+	<zscript>
+		<![CDATA[
+		import org.zkoss.zhtml.*;
+		import example.first.*;
+		
+		int counter=0;
+		
+		private void showAlert(){
+			t1.setValue(Integer.toString(++counter));
+			b3.setVisible(true);
+			System.out.println(++StaticProperties.intValue);
+		}
+		]]>
+	</zscript>
+</window>
