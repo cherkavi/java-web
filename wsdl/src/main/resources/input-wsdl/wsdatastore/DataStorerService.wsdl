@@ -1,0 +1,42 @@
+<wsdl:definitions xmlns:ns="http://ports.soa.allianz.it/Architettura/DataStorerPort-v1"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://datastorer.soa.allianzit/DataStorerService-v1"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  name="DataStorerService" targetNamespace="http://datastorer.soa.allianzit/DataStorerService-v1">
+    <wsdl:import location="DataStoreServicePort.wsdl"
+                 namespace="http://ports.soa.allianz.it/Architettura/DataStorerPort-v1"></wsdl:import>
+    <wsdl:binding name="DataStorerServiceSoapBinding" type="ns:DataStorerPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="saveData">
+            <soap:operation soapAction="urn:saveData"/>
+            <wsdl:input name="saveData">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="saveDataResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SaveException">
+                <soap:fault name="SaveException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="loadData">
+            <soap:operation soapAction="urn:loadData"/>
+            <wsdl:input name="loadData">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="loadDataResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NoSuchIdException">
+                <soap:fault name="NoSuchIdException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="DataStorerService">
+        <wsdl:port binding="tns:DataStorerServiceSoapBinding" name="DataStorerPort">
+            <soap:address location="http://datastorerst.soa.allianzit/wsdatastore/services/DataStorerService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

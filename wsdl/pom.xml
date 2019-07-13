@@ -1,0 +1,336 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.epam.bipazci</groupId>
+    <artifactId>wsdl-code-generator</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>mock-server</name>
+    <url>https://kb.epam.com/display/BIPAZCI</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdkVersion>1.5</jdkVersion>
+        <jdk5Signature>java15</jdk5Signature>
+        <skipSigning>true</skipSigning>
+    </properties>
+
+
+    <dependencies>
+        <!-- Axis 1 :begin -->
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-discovery</groupId>
+            <artifactId>commons-discovery</artifactId>
+            <version>0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>jaxrpc-api</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        <!--Axis 1 :end -->
+
+        <!-- testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Axis 2 : begin 
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>axis</groupId>
+            <artifactId>axis-wsdl4j</artifactId>
+            <version>1.5.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.neethi</groupId>
+            <artifactId>neethi</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.ws.commons.axiom</groupId>
+            <artifactId>axiom-impl</artifactId>
+            <version>1.2.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        Axis 2 : end -->
+
+    </dependencies>
+
+
+    <profiles>
+
+        <!-- AXIS 1 source code generator  -->
+        <profile>
+            <id>axis1-generate-sources</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>axistools-maven-plugin</artifactId>
+                        <!-- 1.1, 1.2, 1.3, 1.4  almost the same -->
+                        <version>1.3</version>
+                        <configuration>
+                            <serverSide>false</serverSide>
+                            <packageSpace>com.epam.bipazci.allianz.arcows2</packageSpace>
+                            <sourceDirectory>${basedir}/src/main/resources/input-wsdl/arcows2/</sourceDirectory>
+                            <!--useEmitter>true</useEmitter-->
+                            <!--allElements>true</allElements-->
+                            <subPackageByFileName>true</subPackageByFileName>
+
+                            <wsdlFiles>
+                                <!-- wsdlFile>DatiMifidService.wsdl</wsdlFile -->
+                                <wsdlFile>PPAnagrafeClienteService.wsdl</wsdlFile>
+                                <wsdlFile>PPPosizioneCompletaService.wsdl</wsdlFile> 
+
+                                <!-- acrows3 module 
+				<packageSpace>com.epam.bipazci.allianz.arcows2</packageSpace>
+                                <sourceDirectory>${basedir}/src/main/resources/input-wsdl/arcows3/</sourceDirectory>
+
+                                <wsdlFile>ArchivioSimulazioniWS.wsdl</wsdlFile>
+                                <wsdlFile>DettaglioSimulazioneWS.wsdl</wsdlFile>
+                                <wsdlFile>MisureProdPortafoglioWS.wsdl</wsdlFile>
+                                <wsdlFile>ArchivioSimulazioniWS.wsdl</wsdlFile>
+                                <wsdlFile>PtfOnlineWS.wsdl</wsdlFile>
+                                <wsdlFile>RetrieveProfiloMIFIDWS.wsdl</wsdlFile>
+                                <wsdlFile>StampaSimulazione.wsdl</wsdlFile>
+                                <wsdlFile>ValidaSimulazioneWS.wsdl</wsdlFile>
+                                <wsdlFile>VerificaAdeguatezzaGP.wsdl</wsdlFile>
+                                <wsdlFile>VerificaAdeguatezzaWS.wsdl</wsdlFile>
+                                <wsdlFile>VerificaSimulazioneSimGPWS.wsdl</wsdlFile>
+                                <wsdlFile>VerificaSimulazioneSimWS.wsdl</wsdlFile>
+                                <wsdlFile>VerificaSimulazioneWS.wsdl</wsdlFile>
+				-->
+
+                                <!-- acrows3.wc module
+				<packageSpace>com.epam.bipazci.allianz.arcows3</packageSpace>
+                                <sourceDirectory>${basedir}/src/main/resources/input-wsdl/arcows3/wc</sourceDirectory>
+
+                                <wsdlFile>AlertService.wsdl</wsdlFile>
+                                <wsdlFile>AlertService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>CatalogoService.wsdl</wsdlFile>
+                                <wsdlFile>CatalogoService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>ClienteService.wsdl</wsdlFile>
+                                <wsdlFile>ClienteService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>ContiCorrentiService.wsdl</wsdlFile>
+                                <wsdlFile>ContiCorrentiService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>CreditiService.wsdl</wsdlFile>
+                                <wsdlFile>CreditiService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>DecodificaService.wsdl</wsdlFile>
+                                <wsdlFile>DecodificaService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>DocumentDownloadService.wsdl</wsdlFile>
+                                <wsdlFile>DocumentDownloadService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>GestionePropostaCCService.wsdl</wsdlFile>
+                                <wsdlFile>GestionePropostaCCService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>GestioneRBVitaService.wsdl</wsdlFile>
+                                <wsdlFile>GestioneRBVitaService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>GrafometricaService.wsdl</wsdlFile>
+                                <wsdlFile>GrafometricaService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>ImpersonificazioneService.wsdl</wsdlFile>
+                                <wsdlFile>ImpersonificazioneService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>NormalizzazioneService.wsdl</wsdlFile>
+                                <wsdlFile>NormalizzazioneService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>ProvisioningService.wsdl</wsdlFile>
+                                <wsdlFile>ProvisioningService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>SimulazioneService.wsdl</wsdlFile>
+                                <wsdlFile>SimulazioneService_Definitions.wsdl</wsdlFile>
+                                <wsdlFile>TrasformazioneDartaService.wsdl</wsdlFile>
+                                <wsdlFile>TrasformazioneDartaService_Definitions.wsdl</wsdlFile>
+                                 -->
+
+                                <!-- files with issues .... - should be considered in future -->
+                                <!--wsdlFile>AzionamentoWorkflowService.wsdl</wsdlFile-->
+                                <!--wsdlFile>AzionamentoWorkflowService_Definitions.wsdl</wsdlFile-->
+
+                                <!-- wsdlFile>GestionePropostaService.wsdl</wsdlFile>
+                                <wsdlFile>GestionePropostaService_Definitions.wsdl</wsdlFile-->
+
+                                <!--wsdlFile>RendimentiService.wsdl</wsdlFile>
+                                <wsdlFile>RendimentiService_Definitions.wsdl</wsdlFile-->
+
+                                <!--wsdlFile>ReportService.wsdl</wsdlFile>
+                                <wsdlFile>ReportService_Definitions.wsdl</wsdlFile-->
+
+                            </wsdlFiles>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>wsdl2java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!--
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>axistools-maven-plugin</artifactId>
+                        <version>1.3</version>
+                        <configuration>
+                            <wsdlFiles>
+                            <wsdlFiles>DatiMifidService.wsdl</wsdlFiles>
+                            <wsdlFiles>PPAnagrafeClienteService.wsdl</wsdlFiles>
+                            <wsdlFiles>PPPosizioneCompletaService.wsdl</wsdlFiles>
+                            </wsdlFiles>
+                            <packageSpace>com.epam.bipazci.acrows3</packageSpace>
+                            <sourceDirectory>src/main/resources/input-wsdl/acrows3</sourceDirectory>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>javax.mail</groupId>
+                                <artifactId>mail</artifactId>
+                                <version>1.4.1</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>javax.activation</groupId>
+                                <artifactId>activation</artifactId>
+                                <version>1.1</version>
+                            </dependency>
+                        </dependencies>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>wsdl2java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    -->
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- AXIS 2 code generator ( wsdl client ) -->
+        <profile>
+            <id>axis2-generate-sources</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.axis2</groupId>
+                        <artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+                        <!-- documentation: https://axis.apache.org/axis2/java/core/tools/maven-plugins/axis2-wsdl2code-maven-plugin/wsdl2code-mojo.html -->
+			<!-- documentation: http://axis.apache.org/axis/java/maven/wsdl2java/generate-sources-mojo.html-->
+                        <version>1.7.3</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>wsdl2code</goal>
+                                </goals>
+                                <configuration>
+                                    <!--packageName>com.epam.bipazci.acrows2</packageName-->
+                                    <packageName>${wsdl.package}</packageName>
+                                    <wsdlFile>${wsdl.file}</wsdlFile>
+                                    <databindingName>xmlbeans</databindingName>
+                                    <wrapArrays>false</wrapArrays>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- JAXWS generator of code -->
+        <profile>
+            <id>mock-server-generator</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>1.9</version>
+                        <executions>
+                            <execution>
+                                <id>add-source</id>
+                                <!-- <phase>generate-sources</phase> -->
+                                <phase>none</phase>
+                                <goals>
+                                    <goal>add-source</goal>
+                                </goals>
+                                <configuration>
+                                    <sources>
+                                        <source>${basedir}/target/generated/src/main/java</source>
+                                    </sources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>jaxws-maven-plugin</artifactId>
+                        <version>1.12</version>
+                        <configuration>
+                            <wsdlDirectory>${basedir}/src/main/resources/input-wsdl/acrows3/wsdl/wc/</wsdlDirectory>
+                            <packageName>com.epam.bipazci.mock</packageName>
+                            <keep>true</keep>
+                            <sourceDestDir>${basedir}/target/generated/src/main/java</sourceDestDir>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>wsimport</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+</project>

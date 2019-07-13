@@ -1,0 +1,38 @@
+<wsdl:definitions xmlns:ns="http://schemas.soa.allianz.it/Architettura/DataStorer/2013-01-28" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap" xmlns:tns="http://ports.soa.allianz.it/Architettura/DataStorerPort-v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DataStoreServicePort" targetNamespace="http://ports.soa.allianz.it/Architettura/DataStorerPort-v1" xsi:schemaLocation="http://schemas.soa.allianz.it/Architettura/DataStorer/2013-01-28 DataStoreSchema.xsd ">
+    <wsdl:types>
+        <xsd:schema xmlns:ns="http://schemas.soa.allianz.it/Architettura/DataStorer/2013-01-28" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap" xmlns:tns="http://ports.soa.allianz.it/Architettura/DataStorerPort-v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <xsd:import namespace="http://schemas.soa.allianz.it/Architettura/DataStorer/2013-01-28"
+                        schemaLocation="DataStoreSchema.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="saveDataResponse">
+        <wsdl:part element="ns:saveDataResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveData">
+        <wsdl:part element="ns:saveData" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="loadDataResponse">
+        <wsdl:part element="ns:loadDataResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="NoSuchIdException">
+        <wsdl:part element="ns:NoSuchId" name="NoSuchIdException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="loadData">
+        <wsdl:part element="ns:loadData" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SaveException">
+        <wsdl:part element="ns:SaveErrMsg" name="SaveException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="DataStorerPortType">
+        <wsdl:operation name="saveData">
+            <wsdl:input message="tns:saveData" name="saveData"></wsdl:input>
+            <wsdl:output message="tns:saveDataResponse" name="saveDataResponse"></wsdl:output>
+            <wsdl:fault message="tns:SaveException" name="SaveException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="loadData">
+            <wsdl:input message="tns:loadData" name="loadData"></wsdl:input>
+            <wsdl:output message="tns:loadDataResponse" name="loadDataResponse"></wsdl:output>
+            <wsdl:fault message="tns:NoSuchIdException" name="NoSuchIdException"></wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

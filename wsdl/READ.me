@@ -1,0 +1,59 @@
+========= Server code generation ============
+0 - wsdl files were placed here:
+	\src\main\resources\input-wsdl\acrows2
+	\src\main\resources\input-wsdl\acrows3\wsdl
+	\src\main\resources\input-wsdl\acrows3\wsdl\wc
+
+1 - execute:
+	generate-server-from-wsdl.bat 
+	( as a result you'll see files into src-generated & src-generated-services )
+
+2 - copy all folders 
+	from src-generated-services 
+	into bip-azci\mock-server\src\main\webapp\WEB-INF\services 
+
+3 - copy 
+	from bip-azci\wsdl-code-generator\src-generated\resources 
+	into bip-azci\mock-server\src\main\resources 
+
+4 - copy 
+	from bip-azci\wsdl-code-generator\src-generated\src
+	into C:\EPAM\BIP-AZCI\code\bip-azci\mock-server\src\main\java 
+
+5 - build project bip-azci\mock-server ( use build.bat/sh )
+
+6 - deploy war into your servlet container and start it
+
+7 - check url: http://<server host>:<servlet-container port >/allianz-mock/services/<one name from WEB-INF\services>?wsdl
+	example: http://localhost:8080/allianz-mock/services/DatiMifidServiceService?wsdl
+
+
+========= Client code generation ============
+0 - wsdl files were placed here:
+	\src\main\resources\input-wsdl\acrows2
+	\src\main\resources\input-wsdl\acrows3\wsdl
+	\src\main\resources\input-wsdl\acrows3\wsdl\wc
+
+	remove src-generated
+	remove %destination-project%\src\main\java\bean, 
+	remove %destination-project%\src\main\java\it, 
+	remove %destination-project%\src\main\java\org, 
+	remove %destination-project%\src\main\java\response, 
+	remove %destination-project%\src\main\java\com\epam\bipazci\acrows2 
+
+1 - execute:
+	generate-client-from-wsdl.bat 
+	( as a result you'll see files into src-generated )
+
+3 - copy 
+	from bip-azci\wsdl-code-generator\src-generated\resources 
+	into %destination-project%\src\main\resources 
+
+4 - copy 
+	from bip-azci\wsdl-code-generator\src-generated\src
+	into %destination-project%\src\main\java
+
+5 - build project %destination-project%
+( add libraries with marker Axis2 from current pom.xml )
+
+6 - create client stub code: 
