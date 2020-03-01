@@ -1,0 +1,30 @@
+<wicket:panel>
+	<form wicket:id="form_main">
+		<div align="center">
+			<table style="width:100%">
+				<tr>
+					<th> <wicket:message key="caption_left_variant" /></th>
+					<th> <wicket:message key="caption_value" /></th>
+					<th> <wicket:message key="caption_right_variant" /></th>
+				</tr>
+				<tr>
+					<td> <input type="checkbox" wicket:id="left_variant"  /> </td>
+					<td> <input type="text" wicket:id="text_value"  /> </td>
+					<td> <input type="checkbox" wicket:id="right_variant"  /> </td>
+				</tr>
+			</table>
+		</div>
+		<div align="center">
+			<table style="width:100%">
+				<tr>
+					<td align="center">
+						<input type="button" wicket:id="button_ok" /> 
+					</td>
+					<td align="center"> 
+						<input type="button" wicket:id="button_cancel" />
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</wicket:panel>

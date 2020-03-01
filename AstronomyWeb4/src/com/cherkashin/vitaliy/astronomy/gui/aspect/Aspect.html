@@ -1,0 +1,69 @@
+<wicket:head>
+	<style type="text/css">
+		.message_error{
+			color:red;
+			font-weight: bold;
+		}
+	</style>
+</wicket:head>
+<wicket:panel>
+	<form wicket:id="form_main">
+		<div align="center">
+			<wicket:message key="title" />
+		</div>
+		<hr />
+		<div wicket:id="label" align="center" />
+		<div wicket:id="label_kpd" align="center"></div>
+		<div align="center">
+			<input type="button" wicket:id="button_text_comment" />
+		</div>
+		<div align="center">
+			<table style="float:left;" wicket:id="date_begin_container" >
+				<tr>
+					<td>
+						<wicket:message key="date_begin" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" wicket:id="date_begin" size="8" />
+					</td>
+				</tr>
+			</table>
+			<table style="border:thin black solid; float:left;" wicket:id="date_end_container">
+				<tr>
+					<td>
+						<wicket:message key="date_end" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" wicket:id="date_end" size="8" />
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td align="center" valign="middle">
+						<input type="button" wicket:id="button_execute" style="float:left;height: 100%; display:none;" />
+						<input type="button" wicket:id="button_execute_wrap" style="float:left;height: 100%;"  />
+						<img id="waiter" src="images/ajax-loader_1.gif" style="display:none;" />
+						<a wicket:id="report_link" > <wicket:message key="report_link" /> </a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br />
+		<div wicket:id="form_error" class="message_error" />
+		<input type="button" wicket:id="button_aspect_list" style="width:100%" />
+		<div align="center">
+			<input type="button" wicket:id="button_menu" />
+		</div>
+	</form>
+			<div align="center" style="height: 70px; background: white; color: black; margin-top: 30px; padding-top:50px;">
+				<span style="font-weight: bold;">
+					<wicket:message key="market_place" escape="false" />
+				</span>
+			</div>		
+	
+</wicket:panel>

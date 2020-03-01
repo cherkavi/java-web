@@ -1,0 +1,35 @@
+<wicket:head>
+	<style type="text/css">
+		.message_error{
+			color:red;
+			font-weight: bold;
+		}
+	</style>
+	<style type="text/css">
+		.block{
+			border-color: black;
+			border-style: solid; 
+			border-width: thin;		
+		}
+	</style>
+</wicket:head>
+
+<wicket:panel>
+	<form wicket:id="form_main" >
+		<div align="center" wicket:id="title" > 
+		</div>
+		<div align="center">
+			<input type="button" wicket:id="button_execute" style="display:none" />
+			<input type="button" wicket:id="button_execute_mirror" />
+			<a wicket:id="report_link" ><wicket:message key="execute_result" /> </a> 
+			<img id="waiter" src="images/ajax-loader_1.gif" style="display:none;" />
+		</div>
+		<hr />
+		<div align="center">
+			<input type="button" wicket:id="button_back" />
+		</div>
+		<div align="center">
+			<input type="button" wicket:id="button_menu" />
+		</div>
+	</form>
+</wicket:panel>

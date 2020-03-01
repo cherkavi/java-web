@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>AstronomyStub3</display-name>
+  
+  <servlet>
+    <description></description>
+    <display-name>AstroRobo</display-name>
+    <servlet-name>AstroRobo</servlet-name>
+    <servlet-class>xml_robot.AstroRobo</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AstroRobo</servlet-name>
+    <url-pattern>/astro_robo</url-pattern>
+  </servlet-mapping>
+    
+  <servlet>
+    <servlet-name>wicket</servlet-name>
+    <servlet-class>org.apache.wicket.protocol.http.WicketServlet</servlet-class>
+    <init-param>
+      <param-name>applicationClassName</param-name>
+      <param-value>com.cherkashin.vitaliy.astronomy.application.AstronomyApplication</param-value>
+    </init-param>
+    <init-param>
+      <param-name>configuration</param-name>
+      <!-- deployment, development  -->
+      <param-value>deployment</param-value>
+    </init-param>
+    <!--  database UNIX  -->
+    <init-param>
+      <param-name>unix_database_host</param-name>
+      <param-value>127.0.0.1</param-value>
+    </init-param>
+    <init-param>
+    	<!--  Firebird, MySQL, Oracle -->
+      <param-name>unix_database_driver</param-name>
+      <param-value>MySQL</param-value>
+    </init-param>
+    <init-param>
+      <param-name>unix_database_login</param-name>
+      <param-value>technik</param-value>
+    </init-param>
+    <init-param>
+      <param-name>unix_database_password</param-name>
+      <param-value>technik</param-value>
+    </init-param>
+
+    <!--  database WINDOWS -->
+    <init-param>
+      <param-name>windows_database_host</param-name>
+      <param-value>127.0.0.1</param-value>
+    </init-param>
+    <init-param>
+    	<!--  Firebird, MySQL, Oracle -->
+      <param-name>windows_database_driver</param-name>
+      <param-value>MySQL</param-value>
+    </init-param>
+    <init-param>
+      <param-name>windows_database_login</param-name>
+      <param-value>root</param-value>
+    </init-param>
+    <init-param>
+      <param-name>windows_database_password</param-name>
+      <param-value>root</param-value>
+    </init-param>
+
+    <init-param>
+      <param-name>unix_path_to_text_comment</param-name>
+      <param-value>/usr/share/astronomy/text_comment/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>windows_path_to_text_comment</param-name>
+      <param-value>D:\eclipse_workspace\AstronomyWeb4\text_comment\</param-value>
+    </init-param>
+    <init-param>
+      <param-name>unix_path_to_pattern</param-name>
+      <param-value>/usr/share/astronomy/pattern/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>windows_path_to_pattern</param-name>
+      <param-value>D:\eclipse_workspace\AstronomyWeb4\pattern\</param-value>
+    </init-param>
+    <init-param>
+      <param-name>unix_path_to_output_report</param-name>
+      <param-value>/usr/share/astronomy/output_report/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>windows_path_to_output_report</param-name>
+      <param-value>D:\eclipse_workspace\AstronomyWeb4\output_report\</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>wicket</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+
+
+</web-app>

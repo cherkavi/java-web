@@ -1,0 +1,63 @@
+<wicket:head>
+	<style type="text/css">
+		.message_error{
+			color:red;
+			font-weight: bold;
+		}
+	</style>
+	<style type="text/css">
+		.block{
+			border-color: black;
+			border-style: solid; 
+			border-width: thin;		
+		}
+	</style>
+</wicket:head>
+
+<wicket:panel>
+	<form wicket:id="form_main" >
+		<div align="center" wicket:id="title" > 
+		</div>
+		<div align="center">
+			<table wicket:id="date_wrap" >
+				<tr>
+					<td>
+						<wicket:message key="caption_date" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" wicket:id="date" size="7" />
+					</td>
+				</tr>
+			</table>
+			<table wicket:id="city_wrap" >
+				<tr>
+					<td>
+						<wicket:message key="caption_city" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select wicket:id="city" />
+					</td>
+				</tr>
+			</table>
+		
+			<input type="button" wicket:id="button_execute" style="display:none" />
+			<input type="button" wicket:id="button_execute_mirror" />
+			<img id="waiter" src="images/ajax-loader_1.gif" style="display:none;" />
+		</div>
+		<div align="left" style="overflow-y:scroll" wicket:id="result" >
+			<span wicket:id="result_list" /> 
+		</div>
+		<div align="left" wicket:id="form_error" /> 
+		<hr />
+		<div align="center">
+			<input type="button" wicket:id="button_back" />
+		</div>
+		<div align="center">
+			<input type="button" wicket:id="button_menu" />
+		</div>
+	</form>
+</wicket:panel>

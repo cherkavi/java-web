@@ -1,0 +1,108 @@
+<wicket:head>
+	<style type="text/css">
+		.message_error{
+			color:red;
+			font-weight: bold;
+		}
+	</style>
+
+	<style type="text/css">
+		.block{
+			border-style: solid; 
+			border-width: thin;		
+		}
+	</style>
+		
+	<script type="text/javascript">
+		/** 
+			@param id id of Edit element
+			@param min min value
+			@param max max value
+			@param step_value step 
+		*/
+		function step(id, step_value, min, max){
+			var value=parseInt(document.getElementById(id).value);
+			if(isNaN(value)){
+				document.getElementById(id).value=0;
+			}else{
+				if(step_value>0){
+					if((step_value+value)<=max){
+						value=value+step_value;	
+					}
+				}
+				if(step_value<0){
+					if((value+step_value)>=min){
+						value=value+step_value;	
+					}
+				}
+				document.getElementById(id).value=value;
+			}
+		}
+	</script>
+
+</wicket:head>
+
+<wicket:panel>
+	<div>
+		<form wicket:id="form_main">
+			<div align="center"><span wicket:id="title" style="font-weight: bolder; " /></div>
+			<hr />
+			
+			<div class="block" >
+				<div align="center">
+					<span wicket:id="label_time"  style="font-weight: bold;" />
+				</div>
+				<div>
+					<table>
+						<tr>
+							<td>
+								<wicket:message key="label_date" />
+							</td>
+							<td>
+								<wicket:message key="label_time_hour" />
+							</td>
+							<td>
+								<wicket:message key="label_time_minute" />
+							</td>
+						</tr>
+						
+						<tr>
+							<td>
+								<div wicket:id="date_birth" > </div>
+							</td>
+							<td>
+								<input type="text" id="birthday_time_hour"  wicket:id="time_hour" size="3" />
+								<input type="button" wicket:id="time_hour_inc" value="+" onclick="step('birthday_time_hour',1,0,23)" />
+								<input type="button" wicket:id="time_hour_dec" value="-" onclick="step('birthday_time_hour',-1,0,23)" />
+							</td>
+							<td>
+								<input type="text" id="birthday_time_minute"  wicket:id="time_minute" size="3" />
+								<input type="button" wicket:id="time_minute_inc" value="+" onclick="step('birthday_time_minute',1,0,59)" />
+								<input type="button" wicket:id="time_minute_dec" value="-" onclick="step('birthday_time_minute',-1,0,59)" />
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="block" align="center">
+				<div align="center"><span wicket:id="label_place"  style="font-weight: bold;" /></div>
+			</div>
+			<div class="block" align="center" >
+				<div wicket:id="sex_block">
+					<input type="radio" wicket:id="male" /><wicket:message key="male" />
+					<select wicket:id="select_city" /> 
+					<input type="radio" wicket:id="female" /> <wicket:message key="female" /> 
+				</div>
+			</div>
+			<div wicket:id="form_error" class="message_error"></div>
+			<div align="center" style="margin-top:10px;">
+				<input type="button" wicket:id="button_calculate" style="width:100px;"/>
+			</div>
+			<div align="center" style="height: 70px; background: white; color: black; margin-top: 30px; padding-top:50px;">
+				<span style="font-weight: bold;">
+					<wicket:message key="market_place" escape="false" />
+				</span>
+			</div>		
+		</form>
+	</div>
+</wicket:panel>
