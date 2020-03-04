@@ -25,7 +25,7 @@
         <hibernate.version>4.2.6.Final</hibernate.version>
         <activemq.version>5.9.0</activemq.version>
         <h2.version>1.4.187</h2.version>
-        <jackson.databind.version>2.3.2</jackson.databind.version>
+        <jackson.databind.version>2.9.10.3</jackson.databind.version>
         <slf4j-log4j12.version>1.7.12</slf4j-log4j12.version>
         <junit.version>4.9</junit.version>
         <easymock.version>3.4</easymock.version>
